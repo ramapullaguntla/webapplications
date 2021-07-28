@@ -1,5 +1,11 @@
+.eachrow {
+  text-align: center;
+  display: block;
+}
+
 .App {
   text-align: center;
+  display: block;
 }
 
 .App-logo {
@@ -35,4 +41,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.each-square
+{
+  height: 40px;
+  width: 40px;
 }

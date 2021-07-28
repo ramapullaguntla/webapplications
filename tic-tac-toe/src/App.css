@@ -1,6 +1,12 @@
 .eachrow {
   text-align: center;
-  display: block;
+  display: table;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
 }
 
 .App {
@@ -45,6 +51,10 @@
 
 .each-square
 {
-  height: 40px;
-  width: 40px;
+  float: left;
+
+  height: 34px;
+  width: 34px;  
+  text-align: center;
+  
 }

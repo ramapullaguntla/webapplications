@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const movieRouter = require('./routes/movie-router')
 const app = express()
 const apiPort = 3000
 
@@ -15,6 +16,8 @@ app.get('/', (req, res) =>
 {
     res.send("Welcome");
 });
+
+app.use('/api', movieRouter)
 
 app.listen(apiPort, () => console.log("Node Server running on port 3000"));
 

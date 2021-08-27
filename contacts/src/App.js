@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/Header';
+import Home  from './components/Home';
 import AddContact from './components/AddContact';
 import ContactList from './components/ContactList'
 import React, { useEffect, useState } from 'react';
@@ -24,15 +25,27 @@ function App() {
       //setContacts([...contacts, {id: uuid(), ...contact}]);   
       
       var uniqueid = uuid();
-      const addResponse = await api.post("/contacts", {id:uniqueid, ...contact});
+      await api.post("/contacts", {id:uniqueid, ...contact});
       setContacts([...contacts, {id: uniqueid, ...contact}]);
       console.log("All contacts: " + JSON.stringify(contacts));      
     };
 
-  const removeContactHandler = (id) =>
+
+  const deleteContact = async (id) =>
   {
-    const newContactList = contacts.filter( (c) => c.id !== id);
-    setContacts(newContactList);
+      await api.delete("/contacts/" + id);
+  };
+  const removeContactHandler = async (id) =>
+  {
+    //const newContactList = contacts.filter( (c) => c.id !== id);
+    //setContacts(newContactList);
+     await deleteContact(id);
+     const allContacts = await getContacts();
+     if(allContacts)
+      {
+        setContacts(allContacts);
+      }
+
   }
 
     useEffect(() =>
@@ -57,8 +70,9 @@ function App() {
     }, [contacts]);
   
   return (
-    <div className="ui container">
+    <div className="ui container center">
        <Header/>
+       <Home/>
        <AddContact addContactHandler={addContactHandler}/>
        <ContactList contacts={contacts} getContactId={removeContactHandler}/>
     </div>

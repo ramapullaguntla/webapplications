@@ -1,12 +1,5 @@
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
 .App {
   text-align: center;
-  display: block;
 }
 
 .App-logo {
@@ -42,14 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.each-square
-{
-  float: left;
-
-  height: 34px;
-  width: 34px;  
-  text-align: center;
-  
 }

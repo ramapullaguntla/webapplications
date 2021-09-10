@@ -1,0 +1,57 @@
+.flexcontainer
+{
+    display: flex;
+    border: solid yellow;
+    height: 300px;
+    flex-wrap: wrap;
+}
+
+.box
+{
+  width: 300px;
+}
+
+.box1
+{
+    background-color: crimson;
+}
+
+.box2
+{
+    background-color: blue;
+}
+
+.box3
+{
+    background-color: green;
+}
+
+.box4
+{
+    background-color: yellow;
+}
+
+.box5
+{
+    background-color: darksalmon;    
+}
+.box6
+{
+    background-color:chartreuse;    
+}
+.box7
+{
+    background-color:beige;    
+}
+.box8
+{
+    background-color:brown    
+}
+.box9
+{
+    background-color: cyan;    
+}
+.box10
+{
+    background-color:darkgrey;    
+}

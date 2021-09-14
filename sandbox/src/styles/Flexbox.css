@@ -2,13 +2,18 @@
 {
     display: flex;
     border: solid yellow;
-    height: 300px;
-    flex-wrap: wrap;
+    height: 100vh;
+    
+    flex-direction: column;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
 }
 
 .box
 {
-  width: 300px;
+  height: fit-content;
+  width: fit-content;
 }
 
 .box1

@@ -1,0 +1,18 @@
+.flexheader
+{
+    display: flex;
+    font-size: 50px;
+    background-color: aqua;
+    border: solid green;
+    
+}
+
+.box
+{
+    flex:3
+}
+.links
+{
+    flex:1
+}
+

@@ -38,9 +38,9 @@ class MobileFlexboxLayout extends React.Component {
                     <p>This is a large content with lot of data that users will read</p>
                 </div>
                 <div className="links">
-                    <a href="#">Home</a>
+                    {/* <a href="#">Home</a>
                     <a href="#">Messages</a>
-                    <a href="#">Contacts</a>
+                    <a href="#">Contacts</a> */}
                 </div>
         </div>
         );

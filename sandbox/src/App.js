@@ -5,15 +5,17 @@ import FlexBox from './FlexBoxes/FlexBox';
 import NavigationFlexBox from './FlexBoxes/NavigationFlexBox';
 import ToggleButton from './Components/ToggleButton';
 import MobileFlexboxLayout from './FlexBoxes/NavigationFlexBox';
+import Header from './Components/LoginHeader/Header';
+import Authentication from './Components/LoginHeader/Authentication';
 
 
 function App() {
   return (
-    // <div className="App">
-    //   <Clock />
-    // </div>
-    // <ToggleButton/>
-<MobileFlexboxLayout/>  );
+    <div>
+        <Header />    
+        <Authentication/>        
+    </div>);
+
 }
 
 export default App;

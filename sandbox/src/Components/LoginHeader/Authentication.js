@@ -1,14 +1,14 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import Home from './Home';
+import { useUserContext } from '../../context/userContext';
 
-class Authentication extends React.Component {
-    render() { 
-        const user = false;
-        return (
-            <>{user ? <LoginForm/> : <Home/>}</>
-        );
-    }
-}
+const Authentication = () => {
+    const { user } = useUserContext();
+    return <>{user.isGuestUser ? <LoginForm /> : <Home />}</>;
+  };
+   
+    
+       
  
 export default Authentication;

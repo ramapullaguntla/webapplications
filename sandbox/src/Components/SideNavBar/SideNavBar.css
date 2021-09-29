@@ -1,0 +1,59 @@
+.navbar
+{
+    background-color: grey;
+    height:60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.menu-bars
+{
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+}
+
+.nav-menu
+{
+    background-color: indianred;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top:0;
+    transition: 850ms;
+    left: -100%
+}
+
+.nav-menu.active
+{
+    left:0;
+    transition: 300ms;
+}
+
+.nav-text
+{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    list-style: none;
+    height: 50px;
+    font-family: sans-serif;
+}
+
+.nav-text a:hover{
+    background-color: indigo;
+}
+
+.nav-menu-items
+{
+    width: 100%;
+}
+
+.navbar-toggle
+{
+    background-color: none;
+}

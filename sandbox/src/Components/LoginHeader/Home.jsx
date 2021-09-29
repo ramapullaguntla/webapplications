@@ -1,9 +1,18 @@
 import React from 'react';
+import { useUserContext } from '../../context/userContext';
 
 const Home = () => 
 {
+    const {user, logOut} = useUserContext();
     return(
-        <div>Home Screen</div>
+        <div className="ui container center">
+            <div className="home-profile">
+            {/* <div className="ui message success">
+            <h3>You are now Logged in, {user.name}</h3>
+            {!user.isGuestUser && (<button className="ui button blue" onClick={logOut}>LogOut</button>)}
+            </div> */}
+            </div>
+        </div>
     );
 }
 

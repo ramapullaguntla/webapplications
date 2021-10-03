@@ -18,12 +18,12 @@ const SideNavBar = () =>
     const {user, logOut} = useUserContext();
     return( 
         <>
-        <IconContext.Provider value= {{color: 'blue'}}>
+        <IconContext.Provider value= {{color: 'black'}}>
            <div className="navbar">
                <Link to="#" className="menu-bars">
                    <FaIcons.FaBars onClick={showSideBar}/>
                </Link>
-               <h2>React ContextApi</h2>
+            <h2>Hyland Integration Services</h2>
             <div className="profile">             
             <h3>Welcome, {user.name}</h3>
             {!user.isGuestUser && (<button className="ui button blue" onClick={logOut}>LogOut</button>)}        
@@ -31,11 +31,7 @@ const SideNavBar = () =>
            </div>
            <nav className={isOn ? 'nav-menu active' : 'nav-menu'}>
                 <ul className="nav-menu-items" onClick={showSideBar}>
-                    <li className="navbar-toggle">
-                        <Link to="#" className="menu-bars">
-                            <AiIcons.AiOutlineClose onClick={showSideBar}/>
-                        </Link>
-                    </li>
+                    
                     {SidebarData.map((item, index) =>
                     {
                         return(

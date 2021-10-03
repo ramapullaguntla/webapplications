@@ -30,6 +30,13 @@ export const SidebarData = [
         classname: "nav-text",
         icon: <FaIcons.FaTeamspeak/>
 
+    },
+    {
+        title: "Contacts",
+        path: "/contacts",
+        classname: "nav-text",
+        icon: <AiIcons.AiFillContacts/>
+
     }
 
 ];

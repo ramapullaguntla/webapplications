@@ -6,9 +6,7 @@ body {
     rgba(93, 93, 116, 1) 100%
   );
 }
-h2 {
-  margin-bottom: 0;
-}
+
 
 .login {
   display: flex !important;
@@ -79,4 +77,11 @@ p {
   justify-content: center;
   align-items: center;
   font-size: 3rem;
+}
+
+.contacts
+{
+  display: flex;
+  justify-content: center;
+  
 }

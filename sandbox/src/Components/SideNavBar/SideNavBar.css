@@ -4,8 +4,14 @@
     height:60px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;       
     
+}
+
+h2,h3{
+   font-family: sans-serif; 
+
+   margin: 0;
 }
 
 .menu-bars
@@ -17,7 +23,7 @@
 
 .nav-menu
 {
-    background-color: indianred;
+    background-color: lightgrey;
     width: 250px;
     height: 100vh;
     display: flex;
@@ -42,10 +48,12 @@
     list-style: none;
     height: 50px;
     font-family: sans-serif;
+    font-size: 1.7rem;
+    
 }
 
 .nav-text a:hover{
-    background-color: indigo;
+    background-color: rgb(224, 213, 107);
 }
 
 .nav-menu-items
@@ -56,4 +64,12 @@
 .navbar-toggle
 {
     background-color: none;
+}
+
+.contact
+{
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+    align-items: center;
 }

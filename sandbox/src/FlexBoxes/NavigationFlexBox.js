@@ -21,7 +21,7 @@ import '../styles/NavigationFlexbox.css'
 class MobileFlexboxLayout extends React.Component {
     render() 
     { 
-        return(
+        return( 
             <div>
                 <div className="mobileflex">
                     <button>Back</button>

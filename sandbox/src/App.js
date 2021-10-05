@@ -7,6 +7,7 @@ import Home from './Components/SideNavBar/Pages/Homepage';
 import Reports from './Components/SideNavBar/Pages/Reports';
 import Products from './Components/SideNavBar/Pages/Products';
 import Contacts from './Components/SideNavBar/Pages/Contacts';
+import Temperature from './Components/LiftStateUp/Temperature';
 
 const contactsdata = [
   {
@@ -25,18 +26,20 @@ const contactsdata = [
 
 function App() {
   return (
-    <UserContextProvider>
-    <Router>      
-      <SideNavBar/>   
-      <Authentication/>    
-      <Switch>
-        <Route path="/" exact component={Home}/>
-        <Route path="/reports"  component = {Reports}/>
-        <Route path="/products"  component = {Products}/>
-        <Route path="/contacts"  render={(props) => <Contacts {...props} contactdata = {contactsdata}></Contacts>}/>
-      </Switch>
-    </Router>
-    </UserContextProvider> );
+    // <UserContextProvider>
+    // <Router>      
+    //   <SideNavBar/>   
+    //   <Authentication/>    
+    //   <Switch>
+    //     <Route path="/" exact component={Home}/>
+    //     <Route path="/reports"  component = {Reports}/>
+    //     <Route path="/products"  component = {Products}/>
+    //     <Route path="/contacts"  render={(props) => <Contacts {...props} contactdata = {contactsdata}></Contacts>}/>
+    //   </Switch>
+    // </Router>
+    // </UserContextProvider>
+    <Temperature/>
+     );
 
 }
 

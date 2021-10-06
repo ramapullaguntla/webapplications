@@ -8,6 +8,7 @@ import Reports from './Components/SideNavBar/Pages/Reports';
 import Products from './Components/SideNavBar/Pages/Products';
 import Contacts from './Components/SideNavBar/Pages/Contacts';
 import Temperature from './Components/LiftStateUp/Temperature';
+import CalculateTemperature from './Components/LiftStateUp/CalculateTemperature';
 
 const contactsdata = [
   {
@@ -38,7 +39,7 @@ function App() {
     //   </Switch>
     // </Router>
     // </UserContextProvider>
-    <Temperature/>
+    <CalculateTemperature/>
      );
 
 }

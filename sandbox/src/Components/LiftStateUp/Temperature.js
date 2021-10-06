@@ -2,10 +2,6 @@ import React from 'react'
 
 class Temperature extends React.Component
 {
-    state = {
-        boils: false,
-        boilString: "Water does not boil at this temperature"
-    };
     
     handleChange = (e) =>
     {
@@ -16,15 +12,23 @@ class Temperature extends React.Component
             return;
         }
 
-        var convertedvalue = this.convertToFahreinHeit(tempr);
-        if(convertedvalue > 99) 
+
+        var convertedvalue = tempr;
+        if(this.props.scale === "celsius")
+        {
+            convertedvalue = this.convertToFahreinHeit(tempr);
+        }
+        if(convertedvalue > 100) 
         {
             console.log('Entered number is more');
 
-            this.setState({
-                boils: true,
-                boilString: "Water boils at this temperature"
-            });
+            this.props.updateBoil("Water now Boils");
+        }
+        else
+        {
+            console.log('Entered number is less');
+
+            this.props.updateBoil("Water does not Boil at this temperature");
         }
 
 
@@ -38,9 +42,9 @@ class Temperature extends React.Component
     render()
     {
         return(
-            <div style={{display: 'flex'}}>
-                <textarea value={this.state.boilString}></textarea>
+            <div style={{display: 'flex'}}>                             
                 <input type="text" onChange={this.handleChange}></input>
+                <textarea value={this.props.scale}></textarea>
             </div>
         );
     }

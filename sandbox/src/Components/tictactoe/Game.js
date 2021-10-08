@@ -36,11 +36,14 @@ class Game extends React.Component
     onSquareClicked = (e) =>
     {
         const newsquares = this.state.squares.slice();
-        newsquares[e] = this.state.nextTurn;
+        if(newsquares[e] === null)
+        {
+          newsquares[e] = this.state.nextTurn;
+        }
+        
 
         var isgameover = this.verifyGameOver(newsquares);
 
-        
         if(!isgameover)
         {
             this.setState((prev) => {

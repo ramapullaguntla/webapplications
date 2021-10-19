@@ -1,6 +1,5 @@
 import './App.css';
 import Header from './components/Header';
-import Home  from './components/Home';
 import AddContact from './components/AddContact';
 import ContactList from './components/ContactList'
 import React, { useEffect, useState } from 'react';
@@ -72,7 +71,7 @@ function App() {
   return (
     <div className="ui container center">
        <Header/>
-       <Home/>
+       
        <AddContact addContactHandler={addContactHandler}/>
        <ContactList contacts={contacts} getContactId={removeContactHandler}/>
     </div>

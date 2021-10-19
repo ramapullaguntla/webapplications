@@ -1,6 +1,9 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-function AddNewContact(params) {
+import './contacts.css';
+import {uuid} from 'uuidv4';
+
+const AddNewContact = (props) => {
     
     const { register, handleSubmit, errors } = useForm();
 
@@ -8,29 +11,38 @@ function AddNewContact(params) {
     {
         console.log('Contact Name is ' + data.contactName);
         console.log('Contact Email is ' + data.contactEmail);
+
+        var uniqueid = uuid();
+        props.addcontact({"id": uniqueid, "name": data.contactName, "email": data.contactEmail});
+
     };
 
     return(
-        <form onSubmit={handleSubmit(onAdd)}>
-                <div >
-                    <h1>Add Contact</h1>
-                    <div className="ui form">
-                        <div className="field">
-                            <label>Name</label>
-                            <input type='text' name="contactName" placeholder="Name"
-                            ref={register({required: "Name is required"})}/>
-                        </div>
-                        <p>{errors.contactName?.message}</p>
-                        <div className="field">
-                            <label>Email</label>
-                            <input type='text' name="contactEmail" placeholder="Email"
-                            ref={register({required: "Email is required"})}/>
-                        </div>
-                        <p>{errors.contactName?.message}</p>
-                        <button className="ui button blue">Add Contact</button>
-                    </div>
+        <div className="contactScreen">
+        <form onSubmit={handleSubmit(onAdd)}>                
+            <h1>Add Contact</h1>
+            <div className="divider"></div>
+            <div className="ct form">
+                <div className="eachfield">
+                    <label>Name</label>
+                    <input
+                        type="text"
+                        name="contactName"
+                        placeholder="Name"              
+                        ref={register({ required: "Username is required" })}
+                        />
                 </div>
-                </form>         
+                <p>{errors.contactName?.message}</p>
+                <div className="eachfield">
+                    <label>Email</label>
+                    <input type='text' name="contactEmail" placeholder="Email"
+                    ref={register({required: "Email is required"})}/>
+                </div>
+                <p>{errors.contactEmail?.message}</p>
+                <button className="addbutton">Add Contact</button>
+            </div>               
+        </form>
+        </div>       
     );
 }
 

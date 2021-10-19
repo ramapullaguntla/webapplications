@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {Link, Route} from 'react-router-dom'
+import {Link, Route, useHistory} from 'react-router-dom'
 import { BrowserRouter } from 'react-router-dom';
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -8,6 +8,7 @@ import {SidebarData} from './SidebarData'
 import './SideNavBar.css';
 import { IconContext } from 'react-icons/lib';
 import { useUserContext } from '../../context/userContext';
+import { useLoginContext } from '../../context/loginUserContext';
 
 const SideNavBar = () =>
 {
@@ -15,7 +16,16 @@ const SideNavBar = () =>
 
     const showSideBar = () => setSidebar(!isOn);
 
-    const {user, logOut} = useUserContext();
+    const {user, logOut} = useLoginContext();
+
+const history = useHistory();
+ const logOutUser = () =>
+ {
+   console.log("Entered logout ");
+    logOut();
+    history.push("/");
+ };
+
     return( 
         <>
         <IconContext.Provider value= {{color: 'black'}}>
@@ -26,7 +36,7 @@ const SideNavBar = () =>
             <h2>Hyland Integration Services</h2>
             <div className="profile">             
             <h3>Welcome, {user.name}</h3>
-            {!user.isGuestUser && (<button className="ui button blue" onClick={logOut}>LogOut</button>)}        
+            {!user.isGuestUser && (<button className="ui button blue" onClick={logOutUser}>LogOut</button>)}        
             </div>
            </div>
            <nav className={isOn ? 'nav-menu active' : 'nav-menu'}>

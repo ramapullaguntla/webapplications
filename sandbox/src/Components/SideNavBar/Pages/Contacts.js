@@ -6,28 +6,46 @@ import ContactCard from './ContactCard';
 
 const Contacts = (props) => {
     
-    console.log(props.contactdata);
-    
-
-    const renderContacts =  props.contactdata.map((eachContact) =>
-    {
-     return <ContactCard Contact = {eachContact}/>
-    });
-
-    function rendereach()
+    console.log("The contacts passed are " + props.contactdata[0]);
+        
+    const rendereach = () =>
     {
         return(
             props.contactdata.map((eachContact) => 
             {
-                return <ContactCard Contact = {eachContact}/>
+                return(
+                 <>
+                 <ContactCard Contact = {eachContact} 
+                    deletecontact={deleteContactHandler} 
+                    key={eachContact.id}/>
+                 <div className="divider"></div>
+                 </>
+                );
             })
         );
-    }    
+    };
+    
+    const addContactHandler = (ct) =>
+    {
+        props.addMainContact(ct);
+    }
 
-    return(
+    const deleteContactHandler = (id) =>
+    {
+        props.deleteMainContact(id);
+    }
+
+    return(        
         <div>
-            <AddNewContact/>                
-            {rendereach()}
+            <div style={{margin:'100px', padding:'70px'}}>
+            <AddNewContact addcontact={addContactHandler}/> 
+            </div>    
+            <div>
+                <h2 style={{textAlign:'center', margin:'25px'}}>Contact List</h2>
+            </div>
+            <div style={{display:'flex', flexDirection:'column', alignItems:'center', margin:'25px'}}>
+             {props.contactdata.length > 0 ? rendereach() : <h2>No contacts are found to display</h2>}
+             </div>
         </div>
     );
     

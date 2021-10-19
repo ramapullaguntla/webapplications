@@ -37,26 +37,6 @@ const WebServices = (props) => {
 
 
     
-    const rendereach = () =>
-    {        
-        
-        return(            
-            svc.map((eachContact) => 
-            {
-                return(
-                 <>
-                 <div>{eachContact.Name}</div>
-                 <ul>
-                     {eachContact.ServiceDetails.map((service) => {
-                         return (<li>{service.Name}</li>);
-                     } )}
-                 </ul>
-                 <div className="divider"></div>
-                 </>
-                );
-            })
-        );
-    };
        
 
     // return(        
@@ -74,33 +54,46 @@ const WebServices = (props) => {
         const renderTree = () => {
          
          return(
-         svc.map((eachproject) =>
+         WebServiceData.map((eachproject) =>
          {
              console.log("Project Name " + eachproject.Name);
              return(
             <TreeItem key={eachproject.Name} nodeId={eachproject.Name} label={eachproject.Name} >
-                {eachproject.ServiceDetails.map((service) => renderTreeServiceItem(service))}
+                {eachproject.ServiceDetails.map((service) => renderTreeServiceItem(service, eachproject.Name))}
             </TreeItem>);
          })
          );
         };
 
-        const renderTreeServiceItem = (svcNode) =>
+        const renderTreeServiceItem = (svcNode, parentName) =>
         {
             console.log("Service Name " + svcNode.Name);
+            var nodeID = parentName + "/" + svcNode.Name
             return(
-                <TreeItem key={svcNode.Name} nodeId={svcNode.Name} label={svcNode.Name}  >
-                    {svcNode.OperationDetails.map((op) => renderTreeOpItem(op))}
+                <TreeItem key={svcNode.Name} nodeId={nodeID} label={svcNode.Name}  >
+                    {svcNode.OperationDetails.map((op) => renderTreeOpItem(op, nodeID))}
                 </TreeItem>);
         };
 
-        const renderTreeOpItem = (opItem) =>
+        const renderTreeOpItem = (opItem, parentID) =>
         {
+            var nodeID = parentID + "/" + opItem.Name
             console.log("Operation Name " + opItem.Name);
             return(
-                <TreeItem key={opItem.Name} nodeId={opItem.Name} label={opItem.Name} sx={{ height:'25px'}}>                    
+                <TreeItem key={opItem.Name} nodeId={nodeID} label={opItem.Name} sx={{ height:'25px'}} onClick={(e) => onOperationSelected(nodeID)}>                    
                 </TreeItem>);
         };
+
+        const onOperationSelected = async (nodeID) =>
+        {
+            console.log("Current Operation " + nodeID);
+
+            // var res = await getXMLRequest(nodeID);
+            // if(res)
+            // {
+            //     setResponse(res);
+            // }
+        }
       
         return (
           <div style={{display:'flex',  left:'200', margin:'60px',  flexDirection: 'row'  }}>
@@ -110,10 +103,10 @@ const WebServices = (props) => {
             defaultExpandIcon={<FcIcons.FcExpand />} sx={{height: '100vh',width:'400px', overflowY: 'auto', backgroundColor:'#fff'}}>               
             {renderTree()}
           </TreeView>
-           <textarea style={{ marginLeft: '20px', height: '400px', width: '600px'}}>Test</textarea>
-           <button className="addbutton">XML Request</button>
-           <button className="addbutton">JSON Request</button>
-           <button className="addbutton">Execute Request</button>
+           <textarea style={{ marginLeft: '20px', height: '400px', width: '600px'}}></textarea>
+           <button className="wspbutton">XML Request</button>
+           <button className="wspbutton">JSON Request</button>
+           <button className="wspbutton">Execute Request</button>
           </div>
         );
       }

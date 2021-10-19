@@ -73,7 +73,18 @@
     height: 40px;
     border-radius: .3rem;
 }
-    
+
+.wspbutton
+{
+    background: blue;
+    width: 75px;
+    display: flex;
+    font-size: 1rem;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    color: white;
+    height: 40px;
+    border-radius: .3rem;
+}
 
 h1
 {

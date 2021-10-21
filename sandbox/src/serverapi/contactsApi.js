@@ -8,7 +8,7 @@ const contactsApi = axios.create(
 
 const appserverApi = axios.create(
     {
-        baseURL: "http://hyl-044182/appserver/api/his/wsp"        
+        baseURL: "http://localhost/appserver/api/his/wsp"        
     }
 );
 

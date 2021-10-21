@@ -11,7 +11,7 @@ import * as FcIcons from 'react-icons/fc';
 const WebServices = (props) => {
      
     const [svc, setSvc] = useState([]);
-
+    const [txtData, setTxtData] = useState("");
 
     useEffect(() =>
         {
@@ -35,26 +35,24 @@ const WebServices = (props) => {
       return response.data;
   };
 
-
-    
-       
-
-    // return(        
-    //     <div>           
-    //         <div>
-    //             <h2 style={{textAlign:'center', margin:'25px'}}>WebServices List</h2>
-    //         </div>
-    //         <div style={{display:'flex', flexDirection:'column', alignItems:'center', margin:'25px'}}>
-    //          {rendereach()}
-    //          </div>
-    //     </div>
-    // );
+  const getXMLRequest = async (opID) =>
+  {
+      const response = await appserverApi.get("/" + opID + "/XMLRequest", {
+          auth:{
+              username:"manager",
+              password:"password"
+          },
+          withCredentials:true
+      });
+      console.log('contacts are ' + response.data);
+      return response.data;
+  };    
 
     
         const renderTree = () => {
-         
+                  
          return(
-         WebServiceData.map((eachproject) =>
+         svc.map((eachproject) =>
          {
              console.log("Project Name " + eachproject.Name);
              return(
@@ -91,8 +89,10 @@ const WebServices = (props) => {
             // var res = await getXMLRequest(nodeID);
             // if(res)
             // {
-            //     setResponse(res);
+            //     setTxtData(res);
             // }
+
+            setTxtData(nodeID);
         }
       
         return (
@@ -103,7 +103,7 @@ const WebServices = (props) => {
             defaultExpandIcon={<FcIcons.FcExpand />} sx={{height: '100vh',width:'400px', overflowY: 'auto', backgroundColor:'#fff'}}>               
             {renderTree()}
           </TreeView>
-           <textarea style={{ marginLeft: '20px', height: '400px', width: '600px'}}></textarea>
+           <textarea style={{ marginLeft: '20px', height: '400px', width: '600px'}} value={txtData}></textarea>
            <button className="wspbutton">XML Request</button>
            <button className="wspbutton">JSON Request</button>
            <button className="wspbutton">Execute Request</button>

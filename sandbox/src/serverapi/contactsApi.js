@@ -12,6 +12,12 @@ const appserverApi = axios.create(
     }
 );
 
-export {contactsApi, appserverApi};
+const fakeproductsApi = axios.create(
+    {
+        baseURL: "https://fakestoreapi.com"        
+    }
+);
+
+export {contactsApi, appserverApi, fakeproductsApi};
 
 

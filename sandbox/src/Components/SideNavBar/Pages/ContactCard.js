@@ -7,7 +7,7 @@ const ContactCard = (props) =>
 {
     console.log('contact: ' + props.Contact.name)
     return(
-        <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'50%', backgroundColor:'#fff'}}>
+        <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', width:'50%', backgroundColor:'#fff'}} key={props.Contact.id}>
             <div>
              <FaIcons.FaIdBadge/>
              </div>

@@ -43,7 +43,7 @@ const UpdateContact = (props) => {
                         type="text"
                         name="contactName"
                         placeholder="Name"  
-                        defaultValue={location.state.ct.name}  onChange={(e) => setUserState({name: e.target.value})}    
+                        defaultValue={location.state?.ct.name}  onChange={(e) => setUserState({name: e.target.value})}    
                         ref={register({ required: "Username is required" })}
                         />
                 </div>
@@ -51,7 +51,7 @@ const UpdateContact = (props) => {
                 <div className="eachfield">
                     <label>Email</label>
                     <input type='text' name="contactEmail" placeholder="Email" onChange={(e) => setUserState({email: e.target.value})}    
-                    defaultValue={location.state.ct.email} 
+                    defaultValue={location.state?.ct.email} 
                     ref={register({required: "Email is required"})}/>
                 </div>
                 <p>{errors.contactEmail?.message}</p>

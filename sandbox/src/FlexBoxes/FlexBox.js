@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Flexbox.css' 
+import './Flexbox.css' 
 
 class FlexBox extends React.Component
 {

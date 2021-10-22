@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FaRegistered } from 'react-icons/fa';
 import AddNewContact from './AddContact';
 import ContactCard from './ContactCard';
@@ -14,12 +14,12 @@ const Contacts = (props) => {
             props.contactdata.map((eachContact) => 
             {
                 return(
-                 <>
+                 <Fragment key={eachContact.id}>
                  <ContactCard Contact = {eachContact} 
                     deletecontact={deleteContactHandler} 
                     key={eachContact.id}/>
                  <div className="divider"></div>
-                 </>
+                 </Fragment>
                 );
             })
         );

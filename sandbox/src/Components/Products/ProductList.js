@@ -28,15 +28,17 @@ const ProductList = () =>
         },  []
     );
 
+    //style={{margin:'10px', height:'300px', width:'400px', border: 'solid 2px red'}}
     const renderProducts = () =>
     {
         return(
         reduxproducts.map((prd, index) =>
         {
-            return(<div key={index} style={{margin:'10px', height:'300px', width:'400px', border:'solid 2px red'}}> 
-                    <div>{prd.title}</div>
+            return(<div key={index} className="productcard" > 
+                    <h4 style={{backgroundColor:'midnightblue'}}>{prd.title}</h4>
+                    <div className="divider"></div>
                     <Link to={"/products/"+ prd.id} >
-                        <img src={prd.image} width="100px"></img>
+                        <img src={prd.image} height="120px" width="120px" style={{margin:'10px'}}></img>
                     </Link>
                     </div>);
         })

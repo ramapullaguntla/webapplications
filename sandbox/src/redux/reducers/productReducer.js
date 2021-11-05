@@ -1,11 +1,15 @@
-import React from 'react';
-import { ActionTypes } from '../constants/action-types';
+import { ActionTypes } from "../constants/action-types";
 
-const initialState = {
+const initialstate = {
     products: []
-};
+}
 
-export const productReducer = (state = initialState, {type, payload}) =>
+const data = {
+    name: "Rama",
+    email:"r@gmail.com"
+}
+
+export const productReducer = (state = initialstate, {type, payload}) =>
 {
     switch(type)
     {
@@ -16,16 +20,16 @@ export const productReducer = (state = initialState, {type, payload}) =>
     }
 };
 
-export const selectedProductReducer = (state = {}, {type, payload}) =>
+export const selectedproductReducer = (state = {}, {type, payload}) =>
 {
     switch(type)
     {
         case ActionTypes.SELECTED_PRODUCT:
+            console.log("received state ", state);
             return {...state, ...payload};
-        case ActionTypes.REMOVE_SELECTED_PRODUCT:
+        case ActionTypes.REMOVE_SELECTEDPRODUCT:
             return {};
         default:
             return state;
     }
-}; 
-
+};

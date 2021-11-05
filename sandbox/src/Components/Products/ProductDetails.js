@@ -8,13 +8,16 @@ const ProductDetails = () =>
 {
     
     const {productid} = useParams();
-    const selectedProd = useSelector(state => state.selected);
+    const selectedProd = useSelector(state => state.selectedProduct);
+
+    console.log("selected product: ", selectedProd);
     
     const dispatch = useDispatch();
 
     const getProductByID = async () => {
         const response = await fakeproductsApi.get(`/products/${productid}`).catch(err => console.log(err));
 
+        console.log("selected product with id: ", response.data);
         if(response.data)
         {
             dispatch(selectedProduct(response.data));
@@ -36,8 +39,7 @@ const ProductDetails = () =>
         <div>
             {selectedProd.title ? (<div>
             <p>Product detail page for the product - {selectedProd.title}</p>
-            <img src={selectedProd.image} width="120px" /></div>)
-:           <div><p>Loading.....</p></div>
+            <img src={selectedProd.image} width="120px" /></div>): <div><p>Loading.....</p></div>
             }
         </div>
     );

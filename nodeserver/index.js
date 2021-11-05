@@ -1,9 +1,14 @@
+const dotenvconfig = require('dotenv');
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const movieRouter = require('./routes/movie-router')
+const userRouter = require('./routes/user-router')
 const app = express()
-const apiPort = 3000
+
+dotenvconfig.config({path: '.env'})
+const apiPort = process.env.NODESERVER_PORT;
+console.log("The api port value is ", apiPort);
 
 const db = require('./db')
 
@@ -17,9 +22,10 @@ app.get('/', (req, res) =>
     res.send("Welcome");
 });
 
-app.use('/api', movieRouter)
+app.use('/api', movieRouter);
+app.use('/api/user', userRouter);
 
-app.listen(apiPort, () => console.log("Node Server running on port 3000"));
+app.listen(apiPort, () => console.log("Node Server running on port ", apiPort));
 
 
 

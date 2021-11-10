@@ -18,6 +18,12 @@ const fakeproductsApi = axios.create(
     }
 );
 
-export {contactsApi, appserverApi, fakeproductsApi};
+const loginApi = axios.create(
+    {
+        baseURL: "http://localhost:3001/"        
+    }
+);
+
+export {contactsApi, appserverApi, fakeproductsApi, loginApi};
 
 

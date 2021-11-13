@@ -1,34 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useForm} from "react-hook-form";
 import { Link } from 'react-router-dom';
 import { useLoginContext } from '../../context/loginUserContext';
 import { useUserContext } from '../../context/userContext';
-import { useState } from "react";
+import { loginApi } from '../../serverapi/contactsApi';
 
 
-const LoginForm = () =>
+const SignUpForm = () =>
 {
+  
+  const [displayMessage, setMessage] = useState("Already have an account? Login here");
+  const addUser = async (userdata) =>
+  {
+      const response = await loginApi.post("/createuser", userdata);
+            
+      return response.data;
+  };
 
-   const [errorMessage, setMessage] = useState("");
     const { register, handleSubmit, errors } = useForm();
-    const { user, logIn } = useLoginContext();
-
+   
     const onSubmit = async (data) => {
-
-      try
+    var addresponse = await addUser(
+      { 
+        "username" : data.username,
+        "email" : data.email,
+        "password" : data.password,        
+      });
+      if(addresponse)
       {
-      await logIn(data.username, data.password);
-      console.log("Form data", data);
-
-      if(user.isGuestuser)
-      {
-        setMessage("Invalid username or password");
+        setMessage("User created successfully. Login here");
+        console.log("user added", addresponse);
       }
-    }
-    catch
-    {
-      setMessage("Invalid username or password");
-    }
       
     };
     
@@ -36,9 +38,18 @@ const LoginForm = () =>
     return (
         <div className="login">
           <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>Login</h1>
+        <h1>SignUp</h1>
         <div className="ui divider"></div>
-        <div className="ui form">
+        <div className="ui form">        
+          <div className="field">
+            <label>Email</label>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"              
+              ref={register({ required: "Email is required" })}
+            />
+          </div>
           <div className="field">
             <label>Username</label>
             <input
@@ -69,13 +80,12 @@ const LoginForm = () =>
             />
           </div>          
           <p>{errors.password?.message}</p>
-          <button className="fluid ui button blue">Submit</button>
-          <p style={{ color: 'red'}}>{errorMessage}</p>
-          <Link to="/signup" style={{ marginTop: '35px'}}>{"Not registered ? Signup here"}</Link>
+          <button className="fluid ui button blue">SignUp</button>          
+          <Link to="/" style={{ marginTop: '35px'}}>{displayMessage}</Link>
         </div>
       </form>
         </div>
     )
 };
 
-export default LoginForm;
+export default SignUpForm;

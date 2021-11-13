@@ -77,35 +77,9 @@ getUsers = (req, res) =>
 loginUser = async (req, res) => {
     var body = req.body;
     var founduser = await user.findOne({ username: body.username});
-    
-    
-    if(founduser)
-    {        
-        // bcrypt.compare(body.password, founduser.password, function(err, isMatch) 
-        //     {
-        //         // if (err) 
-        //         // {
-        //         //     return res.status(401).json(
-        //         //         {
-        //         //             "message" : err
-        //         //         });
-        //         // }
-        //         if(isMatch)
-        //         {
-        //             return res.status(200).json(
-        //                 {
-        //                     "message" : "success"
-        //                 });
-        //         }
-        //         else
-        //         {
-        //             return res.status(401).json(
-        //                 {
-        //                     "message" : "Invalid password"
-        //                 });
-        //         }               
-        //     });  
         
+    if(founduser)
+    {               
         if(await founduser.comparePassword(body.password))
         {
             return res.status(200).json(
@@ -117,10 +91,17 @@ loginUser = async (req, res) => {
         {
             return res.status(401).json(
                 {
-                    "message" : "Invalid password"
+                    "message" : "Invalid username or password"
                 });
         }
         
+    }
+    else
+    {
+        return res.status(401).json(
+            {
+                "message" : "Invalid username or password"
+            });
     }
 
     

@@ -17,6 +17,8 @@ import { useState, useEffect } from 'react';
 import {uuid} from 'uuidv4';
 import { LogInProvider } from './context/loginUserContext';
 import UpdateContact from './Components/SideNavBar/Pages/UpdateContact';
+import ProtectedRoute from './Protected/ProtectedRoute';
+import SignUpForm from './Components/LoginHeader/SignUp';
 
 function App() {
 
@@ -102,17 +104,19 @@ function App() {
   return (
     <LogInProvider>
     <Router>      
-      <SideNavBar/>   
-      <Authentication/>    
+      <SideNavBar/>           
       <Switch>
-        <Route path="/" exact component={Home}/>
-        <Route path="/reports"  component = {Reports}/>
-        <Route path="/products"  exact component = {ProductList}/>
-        <Route path="/products/:productid"  component = {ProductDetails}/>
-        <Route path="/updateContact"  render={(props) => <UpdateContact editContact= {updateMainContact}/>}/>
-        <Route path="/contacts"  render={(props) => <Contacts {...props} contactdata = {allcontacts} addMainContact={addMainContact}  deleteMainContact={deleteMainContact}></Contacts>}/>
-        <Route path="/webservices"  component = {WebServices}/>
-        <Route path="/webservices"  component = {WebServices}/>
+        <Route path="/" exact component={Authentication}/>
+        <Route path="/signup" exact component={SignUpForm}/>
+        <ProtectedRoute path="/reports"  component = {Reports}/>
+        <ProtectedRoute path="/products"  exact component = {ProductList}/>
+        <ProtectedRoute path="/products/:productid"  component = {ProductDetails}/>
+        <ProtectedRoute path="/updateContact"  render={(props) => <UpdateContact editContact= {updateMainContact}/>}/>
+        {/* <ProtectedRoute path="/contacts"  render={(props) => <Contacts {...props} contactdata = {allcontacts} addMainContact={addMainContact} 
+                   deleteMainContact={deleteMainContact}></Contacts>}/> */}
+        <ProtectedRoute path="/contacts"  component = {Contacts} contactdata = {allcontacts} addMainContact={addMainContact} 
+                   deleteMainContact={deleteMainContact}/>
+        <Route path="/webservices"  component = {WebServices}/>                 
       </Switch>
     </Router>
     </LogInProvider>

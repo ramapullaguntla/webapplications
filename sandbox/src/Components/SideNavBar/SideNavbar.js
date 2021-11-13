@@ -39,9 +39,8 @@ const history = useHistory();
             {!user.isGuestUser && (<button className="ui button blue" onClick={logOutUser}>LogOut</button>)}        
             </div>
            </div>
-           <nav className={isOn ? 'nav-menu active' : 'nav-menu'}>
-                <ul className="nav-menu-items" onClick={showSideBar}>
-                    
+           <div className={isOn ? 'nav-menu active' : 'nav-menu'}>
+                <ul className="nav-menu-items" onClick={showSideBar}>                    
                     {SidebarData.map((item, index) =>
                     {
                         return(
@@ -54,7 +53,7 @@ const history = useHistory();
                         );
                     })}
                 </ul>
-           </nav>
+           </div>
            </IconContext.Provider>
         </>
     );

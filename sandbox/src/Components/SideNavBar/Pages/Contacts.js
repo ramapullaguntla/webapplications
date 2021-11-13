@@ -13,6 +13,7 @@ const Contacts = (props) => {
         return(
             props.contactdata.map((eachContact) => 
             {
+                console.log("each contact ", eachContact);
                 return(
                  <Fragment key={eachContact.id}>
                  <ContactCard Contact = {eachContact} 

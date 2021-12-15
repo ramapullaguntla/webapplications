@@ -1,0 +1,18 @@
+
+{
+   "blogs" :
+  [
+    {
+      "title": "React is good",
+       "text" : "this is about react"
+    },
+    {
+      "title": "JavaScript is good",
+       "text" : "this is about JS"
+    },
+    {
+      "title": "NodeJS is okay",
+       "text" : "this is about NodeJS"
+    }
+  ]
+}

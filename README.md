@@ -1,2 +1,2 @@
 # webapplications
-i want to create a web application using angular and REST API
+I would like to create simple UI applications using React and javascript

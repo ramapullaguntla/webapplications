@@ -8,7 +8,7 @@ import LifecycleTest from './Components/Lifecycle/LifecycleTest';
 render(
   <React.StrictMode>
     <Provider store ={store}>
-    <LifecycleTest />
+    <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

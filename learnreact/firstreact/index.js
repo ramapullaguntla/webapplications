@@ -1,14 +1,20 @@
-import React from "react"
-import  ReactDOM  from "react-dom"
 
-/**
-Challenge: 
 
-- Add an `ul` inside the Header's `nav` and create
-  the following `li`s: "Pricing", "About", & "Contact"
-*/
+function Header() {
+    return (
+        <header className="nav-header">            
+               <img src='./images/react-icon-small.png' className="showImage"></img>
+               <h1>ReactFacts</h1>
+               <ul className="nav-items">
+                    <li>Pricing</li>
+                    <li>About</li>
+                    <li>ContactUs</li>
+                </ul>
+            
+        </header>
+    )
+}
 
-import Header from "./Header"
 
 function Footer() {
     return (
@@ -22,10 +28,10 @@ function MainContent() {
     return (
         <div>
             <h1>Reasons to like react</h1>
-            <ol>
+            <ul className="mainContentItems">
                 <li>It is declarative</li>
                 <li>It is Composable</li>
-            </ol>
+            </ul>
         </div>
     )
 }

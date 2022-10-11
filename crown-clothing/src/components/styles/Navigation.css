@@ -11,8 +11,19 @@
 .navigation-links
 {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     min-width: 30%;
+}
+
+a{
+
+    text-decoration: none;
+    font-size: medium;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
 }
 
 

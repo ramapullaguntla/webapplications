@@ -1,7 +1,7 @@
 import '../styles/Navigation.css'
-import { Routes, Route } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 
 const Navigation = () =>
 {
@@ -9,12 +9,12 @@ const Navigation = () =>
         <div>
         <div className="navigation">
             <div> 
-                <Link to="/">Welcome</Link>
+            <Link to='/' ><CrownLogo /></Link>
             </div>
             <div className="navigation-links">
                 <Link to='/shop' >Shop</Link>
-                <Link>Contact US</Link>
-                <Link>Sign In</Link>
+                <Link>Contact</Link>
+                <Link to='/auth'>SignIn</Link>
             </div>
            
         </div>

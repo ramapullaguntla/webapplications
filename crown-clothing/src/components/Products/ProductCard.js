@@ -3,15 +3,11 @@ import { CartContext } from "../../context/CartContext";
 
 const ProductCard = ({product}) =>
 {
-    const { cartInfo, addItemToCart, setCartInfo} = useContext(CartContext);
+    const { addItemToCart} = useContext(CartContext);
 
     const addThisToCart = () => 
-    {
-        var tempItems = cartInfo.cartItems;
-        addItemToCart(tempItems, product);
-       
-        setCartInfo({...cartInfo, cartItems:tempItems});
-        console.log(cartInfo);
+    {      
+        addItemToCart(product);
         
     }
 

@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { UserContext } from '../../context/UserContext';
 import { createUserWithEmailPassword, createUserDocument} from '../../utils/firebase/firebase.utils'
 import FormInput from '../forminput/FormInput';
+import '../styles/FormStyle.css'
 
 const SignUpForm = () =>
 {
@@ -15,6 +17,8 @@ const SignUpForm = () =>
 
     const [formFields, setFormFields] = useState(formDisplayFields);    
     const {displayName, email, password, confirmpassword} = formFields;
+
+    const { setCurrentUser } = useContext(UserContext);
 
     const resetForm = () =>
     {
@@ -36,6 +40,8 @@ const SignUpForm = () =>
 
             await createUserDocument(user, { displayName });
             resetForm();
+            
+            setCurrentUser(user);
             console.log("form submitted and user created");
             
         } 
@@ -57,7 +63,7 @@ const SignUpForm = () =>
     return (
     <div>
        
-       <form onSubmit={submitform} >
+       <form onSubmit={submitform} className="form-container">
          <FormInput label='Display Name' type='text' displayName='displayName' changeHandler={handleChange} value={displayName}/>
          
          <FormInput label='Email' type='email' displayName='email' changeHandler={handleChange} value={email}/>
@@ -66,7 +72,7 @@ const SignUpForm = () =>
 
          <FormInput label='Confirm Password' type='password' displayName='confirmpassword' changeHandler={handleChange} value={confirmpassword}/>        
 
-         <button type="submit">Sign Up</button>
+         <button style={{ margin: "20px"}} type="submit">Sign Up</button>
        </form>
     </div>
     );

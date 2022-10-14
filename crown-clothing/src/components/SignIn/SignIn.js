@@ -1,17 +1,14 @@
 import { useState } from "react";
-import { signInWithGooglePopup, createUserDocument, signInWithEmail } from "../../utils/firebase/firebase.utils";
+import { signInWithGooglePopup, signInWithEmail } from "../../utils/firebase/firebase.utils";
 import FormInput from "../forminput/FormInput";
-import SignUpForm from "../SignUp/SignUp";
 
 
 const SignIn = () =>
 {
     const googleLogin = async () => 
     {
-        const { user } = await signInWithGooglePopup();
-        console.log(user);
-
-        const userDocRef = createUserDocument(user);
+        const { user } = await signInWithGooglePopup();       
+        console.log(user);        
     }
 
     const formDisplayFields = {       
@@ -19,10 +16,9 @@ const SignIn = () =>
         password: ""       
     };
 
-    
-
     const [formFields, setFormFields] = useState(formDisplayFields);    
     const { email, password } = formFields;
+    
 
     const resetForm = () =>
     {
@@ -35,8 +31,7 @@ const SignIn = () =>
                 
         try {
 
-            const { user } = await signInWithEmail(email, password);
-
+           await signInWithEmail(email, password);            
             
             resetForm();
             console.log("Signed with email and password");
@@ -57,14 +52,14 @@ const SignIn = () =>
 
     return (
        <div>        
-        <form onSubmit={submitform}>
+        <form onSubmit={submitform} className="form-container">
             
             <FormInput label='Email' type='email' displayName='email' changeHandler={handleChange} value={email}/>
 
             <FormInput label='Password' type='password' displayName='password' changeHandler={handleChange} value={password}/>                      
 
-            <button type="submit">Sign In</button>
-            <button onClick={googleLogin} type="button">Google SignIN</button>
+            <button style={{ margin: "20px"}} type="submit">Sign In</button>
+            <button style={{ margin: "20px"}} onClick={googleLogin} type="button">Google SignIN</button>
        </form>
         </div>);
 }

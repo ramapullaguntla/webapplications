@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "name": "Brown Brim",
+      "imageUrl": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "price": 25
+    },
+    {
+      "id": 2,
+      "name": "Blue Beanie",
+      "imageUrl": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "price": 18
+    },
+    {
+      "id": 3,
+      "name": "Brown Cowboy",
+      "imageUrl": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "price": 35
+    },
+    {
+      "id": 4,
+      "name": "Grey Brim",
+      "imageUrl": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "price": 25
+    },
+    {
+      "id": 5,
+      "name": "Green Beanie",
+      "imageUrl": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+      "price": 18
+    },
+    {
+      "id": 6,
+      "name": "Palm Tree Cap",
+      "imageUrl": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+      "price": 14
+    },
+    {
+      "id": 7,
+      "name": "Red Beanie",
+      "imageUrl": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+      "price": 18
+    },
+    {
+      "id": 8,
+      "name": "Wolf Cap",
+      "imageUrl": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+      "price": 14
+    },
+    {
+      "id": 9,
+      "name": "Blue Snapback",
+      "imageUrl": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+      "price": 16
+    }
+  ]
+  

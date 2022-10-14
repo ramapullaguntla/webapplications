@@ -41,7 +41,7 @@ const Navigation = () =>
                 <Link>Contact</Link>
                 
                 <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
-                <Link to='/'><span onClick={toggleCart}><CartIcon /></span></Link>
+                <span onClick={toggleCart}><CartIcon /></span>
             </div>
             { cartInfo.isOpen && <CartDropDown /> }
         </div>

@@ -12,7 +12,7 @@ const ProductCard = ({product}) =>
     }
 
     return(
-        <div style={{ margin: '50px'}}>
+        <div style={{height: '100px', width: '120px', margin: '40px'}}>
             <img src={product.imageUrl} alt={product.name} style={{height: '80px', width: '80px'}}></img>
             <div><span>{product.name}</span></div>
             

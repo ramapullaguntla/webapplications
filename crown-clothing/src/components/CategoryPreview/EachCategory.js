@@ -8,7 +8,10 @@ const EachCategory = () => {
     const { category } = useParams();
     const { categoriesMap } = useContext(CategoriesContext);    
       
-    return <div style={{ display: 'flex',  justifyContent: 'flex-start', flexWrap: 'wrap'}}>
+    return( 
+        <div style={{textAlign:'center', marginBottom:'40px'}}>
+           <h2>{category.toLocaleUpperCase()}</h2>
+           <div style={{ display: 'flex',  justifyContent: 'flex-start', flexWrap: 'wrap', margin:'50px'}}>
               {                                      
                   categoriesMap[category].map(eachItem =>
                     {
@@ -16,7 +19,8 @@ const EachCategory = () => {
                     })                                
               }
                 
-           </div>;
+           </div>
+           </div>);
 }
 
 export default EachCategory;

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { CategoriesContext } from "../../context/ProductContext";
+import { CategoriesContext } from "../../context/CategoryContext";
 import ProductCard from "../Products/ProductCard";
 
 const CategoryPreview = () => {

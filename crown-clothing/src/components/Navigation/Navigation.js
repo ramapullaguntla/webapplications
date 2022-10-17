@@ -14,8 +14,7 @@ import { CartContext } from '../../context/CartContext';
 const Navigation = () =>
 {
     const { currentUser } = useContext(UserContext);
-    console.log("Current user ", currentUser);
-
+    
     const { cartInfo, setCartInfo } = useContext(CartContext);
 
     const logOut = () =>

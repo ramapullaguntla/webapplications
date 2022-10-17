@@ -7,16 +7,7 @@ import '../styles/cart-icon.css';
 
 const CartIcon = () =>
 {
-    const { cartInfo, cartCount } = useContext(CartContext);
-
-    //we can do this at the context level which is shown above.
-    const getTotalCount = () =>
-    {
-
-        var totalCount = cartInfo.cartItems.reduce((total, each) => total + each.qty, 0);
-        // 
-        return totalCount;
-    };
+    const { cartCount } = useContext(CartContext);    
 
     return (
         <div className='cart-icon-container'>

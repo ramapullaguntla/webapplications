@@ -5,7 +5,7 @@ import CheckoutItem from "./CheckoutItem";
 
 function Checkout()
 {
-    const { cartInfo, cartCount, totalPrice } = useContext(CartContext);
+    const { cartInfo, totalPrice } = useContext(CartContext);
 
     const headingArray = [ "Item", "Description", "Qty", "Price", "Remove"];  
 

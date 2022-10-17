@@ -37,9 +37,7 @@ const Navigation = () =>
             <Link to='/' ><CrownLogo /></Link>
             </div>
             <div className="navigation-links">
-                <Link to='/shop' >Shop</Link>
-                <Link>Contact</Link>
-                
+                <Link to='/shop' >Shop</Link>                
                 <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
                 <span onClick={toggleCart}><CartIcon /></span>
             </div>

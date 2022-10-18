@@ -1,10 +1,10 @@
 .directory-container
 {
-    display: flex;
-    
+    display: flex;    
     justify-content: flex-start;
     flex-wrap: wrap;
-    height: 75vh;
-    
+    height: 75vh;    
     margin: 10px;
+    background-color: antiquewhite;
+    padding: 10px;
 }

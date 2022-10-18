@@ -1,0 +1,24 @@
+{
+  "contacts": [
+    {
+      "id": 100,
+      "name": "John doe",
+      "email": "john@gmail.com"
+    },
+    {
+      "id": 200,
+      "name": "mark thomas",
+      "email": "mark1@gmail.com"
+    },
+    {
+      "id": 300,
+      "name": "rama krishna",
+      "email": "rama1@gmail.com"
+    },
+    {
+      "id": 400,
+      "name": "Ramya",
+      "email": "ffdfdf"
+    }
+  ]
+}

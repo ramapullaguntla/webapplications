@@ -1,0 +1,29 @@
+.heading
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.heading-container
+{
+    display: flex;
+    padding: 50px;
+    
+    margin: auto;
+    width: 50%;
+    justify-content: space-around;
+    
+}
+
+.checkout-container
+{
+    display: flex;    
+    padding: 50px;
+    border: 2px solid green;
+    margin: auto;
+    width: 50%;
+    justify-content: space-around;
+    
+}

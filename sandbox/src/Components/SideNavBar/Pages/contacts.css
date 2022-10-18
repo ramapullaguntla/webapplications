@@ -1,0 +1,93 @@
+.addcontact
+{
+    display: flex;
+}
+
+.eachfield
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.button
+{
+    width: 120px;
+    height: 30px;
+    color: burlywood;
+}
+
+.contactScreen
+{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+    max-width: 500px;
+    width: 100%;    
+    margin: auto;
+}
+
+.contactScreen > form
+{
+    width: 75%;
+    border-radius: 5px;
+    border: 1px solid green;
+    background: #fff;
+    padding: 20px;
+}
+
+.divider
+{
+    margin: .1rem 0;
+    line-height: 1;
+    height: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: rgba(0,0,0,.85);
+    
+}
+
+.divider:not(.vertical):not(.horizontal) {
+    border-top: 1px solid rgba(34,36,38,.15);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.ct.form
+{
+    font-size: 1rem;
+    max-width: 100%;
+    position: relative;    
+}
+
+.addbutton
+{
+    background: blue;
+    width: 100%;
+    display: block;
+    font-size: 1rem;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    color: white;
+    height: 40px;
+    border-radius: .3rem;
+}
+
+.wspbutton
+{
+    background: blue;
+    width: 75px;
+    display: flex;
+    font-size: 1rem;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    color: white;
+    height: 40px;
+    border-radius: .3rem;
+}
+
+h1
+{
+    min-height: 1rem;
+    font-size: 2rem;
+}

@@ -1,0 +1,57 @@
+body
+{
+    margin:0;
+    padding: 0;
+}
+
+.nav-items
+{
+    text-decoration: solid;
+    list-style: none;   
+    display: flex; 
+    border: solid 2px red;
+    
+}
+
+.nav-header
+{
+    display: flex;
+    
+    border: solid 2px yellow;
+    align-items: center;
+    padding: 5px;
+    margin: 10px;
+    
+}
+
+.nav-header > img
+{
+    margin-right: auto;
+}
+
+.nav-header > h1
+{
+    margin-right: auto;
+}
+
+.showimage
+{
+    width:40px;
+}
+
+li
+{
+    margin: 10px;
+    padding: 5px;
+}
+
+.mainContentItems > li
+{
+    line-height: 1.2rem;
+}
+
+.mainContentItems > li::marker
+{
+    color: blue;
+    font-size: 1.7rem;
+}

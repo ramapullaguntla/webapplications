@@ -11,6 +11,7 @@ function Checkout()
 
     return ( 
         <div>
+            <div style={{padding:'15px'}}>
             <div className="heading-container">
                     {
                     headingArray.map( (each, index) =>
@@ -20,12 +21,15 @@ function Checkout()
                     }               
                     
             </div>
+            <div className="checkout-container">
             {
                 cartInfo.cartItems.map( each => {
                     return <CheckoutItem key={each.id} checkoutItem={each} />
                 })
             }
+            </div>
             <div style={{textAlign:"center", fontSize: '40px' }}>Total: ${totalPrice}</div>
+            </div>
         </div>
      );
 }

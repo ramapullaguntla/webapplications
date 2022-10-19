@@ -15,18 +15,16 @@ const Navigation = () =>
 {
     const { currentUser } = useContext(UserContext);
     
-    const { cartInfo, setCartInfo } = useContext(CartContext);
+    const {cartInfo, toggleCart } = useContext(CartContext);
 
     const logOut = () =>
     {
        signOutUser();
     }
 
-    const toggleCart = () =>
+    const toggleState = () =>
     {
-        const cartInfoOpen = cartInfo.isOpen;
-
-        setCartInfo({...cartInfo, isOpen: !cartInfoOpen});
+        toggleCart();
     }
 
     return (
@@ -38,7 +36,7 @@ const Navigation = () =>
             <div className="navigation-links">
                 <Link to='/shop' >Shop</Link>                
                 <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
-                <span onClick={toggleCart}><CartIcon /></span>
+                <span onClick={toggleState}><CartIcon /></span>
             </div>
             { cartInfo.isOpen && <CartDropDown /> }
         </div>

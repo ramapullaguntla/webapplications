@@ -1,11 +1,13 @@
-import { useContext } from "react";
+
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { CategoriesContext } from "../../context/CategoryContext";
+
+import { selectCategoryMap } from "../../store/Categories/category.selector";
 import ProductCard from "../Products/ProductCard";
 
 const CategoryPreview = () => {
    
-    const { categoriesMap } = useContext(CategoriesContext);  
+    const categoriesMap = useSelector(selectCategoryMap);  
     
     return <div style={{ display: 'flex', flexDirection:'column' , justifyContent: 'center', flexWrap: 'wrap'}}>
               {

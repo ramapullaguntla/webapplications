@@ -3,20 +3,26 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 
-import { useContext} from 'react';
-import { UserContext } from '../../context/UserContext';
+
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropDown from '../CartDropDown/CartDropDown';
-import { CartContext } from '../../context/CartContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
+import { selectCartStatus } from '../../store/Cart/cart.selector';
+
+import { toggleCartOpen } from '../../store/Cart/cart.action';
 
 const Navigation = () =>
 {
-    const { currentUser } = useContext(UserContext);
+    const  currentUser  = useSelector(selectCurrentUser);
     
-    const {cartInfo, toggleCart } = useContext(CartContext);
+    console.log("Current user is ", currentUser);    
 
+    const isOpen = useSelector(selectCartStatus);
+
+    const dispatch = useDispatch();
     const logOut = () =>
     {
        signOutUser();
@@ -24,7 +30,8 @@ const Navigation = () =>
 
     const toggleState = () =>
     {
-        toggleCart();
+        var toggleAction = toggleCartOpen();
+        dispatch(toggleAction);
     }
 
     return (
@@ -38,7 +45,7 @@ const Navigation = () =>
                 <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
                 <span onClick={toggleState}><CartIcon /></span>
             </div>
-            { cartInfo.isOpen && <CartDropDown /> }
+            { isOpen && <CartDropDown /> }
         </div>
         <Outlet/>
         </div>

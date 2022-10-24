@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer} from 'react';
-import { onAuthStateChangedHandler } from '../utils/firebase/firebase.utils';
+import { createUserDocument, onAuthStateChangedHandler } from '../utils/firebase/firebase.utils';
 
 
 export const UserContext = createContext(
@@ -53,7 +53,11 @@ export const UserProvider = ({children}) =>
     useEffect(() => 
     {
         var unsubscribe = onAuthStateChangedHandler( (user) =>
-        {           
+        {      
+            if(user)     
+            {
+                createUserDocument(user);
+            }
             setCurrentUser(user);
         });
 

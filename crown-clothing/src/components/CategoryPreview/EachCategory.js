@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { CategoriesContext } from "../../context/CategoryContext";
+import { selectCategoryMap } from "../../store/Categories/category.selector";
 import ProductCard from "../Products/ProductCard";
 
 const EachCategory = () => {
     
     const { category } = useParams();
-    const { categoriesMap } = useContext(CategoriesContext); 
-    
+    const categoriesMap = useSelector(selectCategoryMap); 
     const [products, setProducts] = useState(categoriesMap);
 
     useEffect(

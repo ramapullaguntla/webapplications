@@ -1,13 +1,14 @@
 import '../styles/cart-dropdown.css'
-
-import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
 import CartItem from './CartItem';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectCartItems } from '../../store/Cart/cart.selector';
 
 function CartDropDown() {
 
-    const { cartInfo } = useContext(CartContext);
+    //const { cartInfo } = useContext(CartContext);
+
+    const cartItems = useSelector(selectCartItems);
 
     const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ function CartDropDown() {
         <div className="cart-dropdown-container">
            <div className='cart-items'>
               {
-                cartInfo.cartItems.map( (eachItem) =>
+                cartItems.map( (eachItem) =>
                 {
                     return <CartItem key={eachItem.id}  item={eachItem}/>;
                 })

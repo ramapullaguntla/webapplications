@@ -25,9 +25,9 @@ function CartDropDown() {
                 {
                     return <CartItem key={eachItem.id}  item={eachItem}/>;
                 })
-              }
-              <button onClick={gotoCheckout}>CheckOut</button>  
+              }                
            </div>
+           <button onClick={gotoCheckout}>CheckOut</button>
         </div>
      );
 }

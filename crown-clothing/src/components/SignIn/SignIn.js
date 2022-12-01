@@ -58,8 +58,10 @@ const SignIn = () =>
 
             <FormInput label='Password' type='password' displayName='password' changeHandler={handleChange} value={password}/>                      
 
-            <button style={{ margin: "20px"}} type="submit">Sign In</button>
-            <button style={{ margin: "20px"}} onClick={googleLogin} type="button">Google SignIN</button>
+            <div>
+                <button type="submit">Sign In</button>
+                <button onClick={googleLogin} type="button">Google SignIN</button>
+            </div>
        </form>
         </div>);
 }

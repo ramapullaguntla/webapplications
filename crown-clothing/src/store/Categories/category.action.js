@@ -1,4 +1,4 @@
-import { createAction } from "../../utils/reducer/reducer.utils";
+import { createAction } from "../../utils/reducer/reducer1.utils";
 import { CATEGORY_ACTION_TYPES} from "./category.types";
 
 export const getCategoriesMap = (categoriesMap) =>

@@ -28,7 +28,7 @@ const EachCategory = () => {
     return( 
         <div style={{textAlign:'center', marginBottom:'40px'}}>
            <h2>{category.toLocaleUpperCase()}</h2>
-           <div style={{ display: 'flex',  justifyContent: 'flex-start', flexWrap: 'wrap', margin:'50px'}}>
+           <div style={{ display: 'flex',  justifyContent: 'space-around', flexWrap: 'wrap', margin:'60px'}}>
               {                                      
                   categoriesMap[category] ? categoriesMap[category].map(eachItem =>
                     {

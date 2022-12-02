@@ -37,9 +37,11 @@ const Navigation = () =>
     return (
         <div>
         <div className="navigation">
-            <div> 
-            <Link to='/' ><CrownLogo /></Link>
+            <div className='navigation-logo'> 
+                <Link to='/' ><CrownLogo /></Link>
+                <div><span>Abstract | Help Center</span></div>
             </div>
+            
             <div className="navigation-links">
                 <Link to='/shop' >Shop</Link>                
                 <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
@@ -47,7 +49,20 @@ const Navigation = () =>
             </div>
             { isOpen && <CartDropDown /> }
         </div>
+        <div className='help-section'>
+            <div className='help-section-content'>
+                <div className='header'>How can we help?</div>
+                <input type='search' placeholder='Search' />
+            </div>
+        </div>
         <Outlet/>
+        <div className='footer'>           
+                 <div>Abstract</div>
+                 <div>Resources</div>
+                 <div>Community</div>
+                 <div>Company</div>
+                 <div>&copy; Copyright 2022 Rama Pullaguntla</div>           
+        </div>
         </div>
     );
 }

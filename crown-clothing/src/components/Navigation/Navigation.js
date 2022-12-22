@@ -1,4 +1,3 @@
-import '../styles/Navigation.css'
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
@@ -35,34 +34,38 @@ const Navigation = () =>
     }
 
     return (
-        <div>
-        <div className="navigation">
-            <div className='navigation-logo'> 
-                <Link to='/' ><CrownLogo /></Link>
-                <div><span>Abstract | Help Center</span></div>
+        // creating the top Navigation section        
+        <div className='relative max-w-7xl mx-auto min-h-screen'>
+            {/* Navigation Bar */}
+            <div className=" bg-gray-400  px-2 py-4 flex justify-between">
+                <div className='flex items-center space-x-4'>
+                    <Link to='/' ><CrownLogo /></Link>
+                    <div className='text-xl font-bold'>Welcome to Crown Clothing</div>
+                </div>
+                
+                <div className="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                    <Link to='/shop' >Shop</Link>                
+                    <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
+                    <span onClick={toggleState}><CartIcon /></span>
+                </div>
+                { isOpen && <CartDropDown /> }
             </div>
+            {/* Help section */}
+            <div className='max-w-6xl bg-gray-200 mt-6 mx-auto p-6 text-center'>
+                <h3 className='text-4xl font-sans '>How can we help?</h3>
+                <input className='w-full rounded-xl p-4 m-2' type='search' placeholder='Search' />
+            </div>
+
+            <Outlet/>
             
-            <div className="navigation-links">
-                <Link to='/shop' >Shop</Link>                
-                <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
-                <span onClick={toggleState}><CartIcon /></span>
+            {/* Footer */}
+            <div className='w-full flex flex-col items-center space-y-4 text-md py-4 font-medium bg-slate-800 text-white md:absolute md:bottom-0 md:flex-row md:space-y-0 md:justify-around'>           
+                <div>Abstract</div>
+                <div>Resources</div>
+                <div>Community</div>
+                <div>Company</div>
+                <div>&copy; Copyright 2022 Rama Pullaguntla</div>           
             </div>
-            { isOpen && <CartDropDown /> }
-        </div>
-        <div className='help-section'>
-            <div className='help-section-content'>
-                <div className='header'>How can we help?</div>
-                <input type='search' placeholder='Search' />
-            </div>
-        </div>
-        <Outlet/>
-        <div className='footer'>           
-                 <div>Abstract</div>
-                 <div>Resources</div>
-                 <div>Community</div>
-                 <div>Company</div>
-                 <div>&copy; Copyright 2022 Rama Pullaguntla</div>           
-        </div>
         </div>
     );
 }

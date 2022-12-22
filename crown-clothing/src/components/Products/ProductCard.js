@@ -16,14 +16,10 @@ const ProductCard = ({product}) =>
      }
                
     return(
-        <div>
-            <img src={product.imageUrl} alt={product.name} style={{height: '80px', width: '80px'}}></img>
-            <div><span>{product.name}</span></div>
-            
-            <div><span>${product.price}</span></div>
-            <div>
-                <button onClick={addThisToCart}>Add To Cart</button>
-            </div>
+        <div className="flex flex-col items-center p-3 mb-5">
+            <img className="w-20 h-20" src={product.imageUrl} alt={product.name}></img>
+            <div className="text-sm">{product.name} - ${product.price}</div>                   
+            <button className="bg-slate-500 rounded-md text-black py-1 text-center" onClick={addThisToCart}>Add To Cart</button>
         </div>
     );
 };

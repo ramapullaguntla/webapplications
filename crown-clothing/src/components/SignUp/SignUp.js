@@ -63,7 +63,8 @@ const SignUpForm = () =>
     return (
     <div>
        
-       <form onSubmit={submitform} className="form-container">
+       <form onSubmit={submitform} className="flex flex-col items-center space-y-5">
+
          <FormInput label='Display Name' type='text' displayName='displayName' changeHandler={handleChange} value={displayName}/>
          
          <FormInput label='Email' type='email' displayName='email' changeHandler={handleChange} value={email}/>
@@ -72,7 +73,7 @@ const SignUpForm = () =>
 
          <FormInput label='Confirm Password' type='password' displayName='confirmpassword' changeHandler={handleChange} value={confirmpassword}/>        
 
-         <button style={{ margin: "20px"}} type="submit">Sign Up</button>
+         <button className="bg-slate-500 rounded-md text-black py-1 text-center" type="submit">Sign Up</button>
        </form>
     </div>
     );

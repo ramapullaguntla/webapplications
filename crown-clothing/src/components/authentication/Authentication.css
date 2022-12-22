@@ -1,7 +1,6 @@
 .authentication-container
 {
     display: flex;
-    justify-content: center; 
-    border: 2px solid yellow;  
+    justify-content: center;     
     align-items: center;
 }

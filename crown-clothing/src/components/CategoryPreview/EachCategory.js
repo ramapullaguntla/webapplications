@@ -26,9 +26,9 @@ const EachCategory = () => {
     console.log("category map in page", categoriesMap);
     console.log("Products in page ", products);
     return( 
-        <div style={{textAlign:'center', marginBottom:'40px'}}>
-           <h2>{category.toLocaleUpperCase()}</h2>
-           <div style={{ display: 'flex',  justifyContent: 'space-around', flexWrap: 'wrap', margin:'60px'}}>
+        <div className="p-6">
+           <h2 className="text-2xl font-bold text-center">{category.toLocaleUpperCase()}</h2>
+           <div className="grid gap-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
               {                                      
                   categoriesMap[category] ? categoriesMap[category].map(eachItem =>
                     {

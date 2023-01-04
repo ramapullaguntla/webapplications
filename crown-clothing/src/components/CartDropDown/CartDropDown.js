@@ -1,8 +1,8 @@
-import '../styles/cart-dropdown.css'
 import CartItem from './CartItem';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCartItems } from '../../store/Cart/cart.selector';
+import { toggleCartOpen } from '../../store/Cart/cart.action';
 
 function CartDropDown() {
 
@@ -12,8 +12,13 @@ function CartDropDown() {
 
     const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+
     const gotoCheckout = () =>
     {
+        const toggleCart = toggleCartOpen();
+        dispatch(toggleCart);
+
         navigate('/checkout');
     };
 

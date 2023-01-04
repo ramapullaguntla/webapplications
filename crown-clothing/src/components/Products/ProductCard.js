@@ -19,7 +19,7 @@ const ProductCard = ({product}) =>
         <div className="flex flex-col items-center p-3 mb-5">
             <img className="w-20 h-20" src={product.imageUrl} alt={product.name}></img>
             <div className="text-sm">{product.name} - ${product.price}</div>                   
-            <button className="bg-slate-500 rounded-md text-black py-1 text-center" onClick={addThisToCart}>Add To Cart</button>
+            <button className="bg-slate-500 rounded-md text-black py-1 text-center shadow-md hover:bg-white hover:border-2 hover:border-gray-400" onClick={addThisToCart}>Add To Cart</button>
         </div>
     );
 };

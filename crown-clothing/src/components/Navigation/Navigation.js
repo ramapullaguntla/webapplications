@@ -37,7 +37,7 @@ const Navigation = () =>
         // creating the top Navigation section        
         <div className='relative max-w-7xl mx-auto min-h-screen'>
             {/* Navigation Bar */}
-            <div className=" bg-gray-400  px-2 py-4 flex justify-between">
+            <div className=" bg-gray-400  px-2 py-4 flex justify-between relative">
                 <div className='flex items-center space-x-4'>
                     <Link to='/' ><CrownLogo /></Link>
                     <div className='text-xl font-bold'>Welcome to Crown Clothing</div>
@@ -48,7 +48,7 @@ const Navigation = () =>
                     <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
                     <span onClick={toggleState}><CartIcon /></span>
                 </div>
-                { isOpen && <CartDropDown /> }
+                <div className='absolute top-32 right-2 md:top-12'>{ isOpen && <CartDropDown /> }</div>
             </div>
             {/* Help section */}
             <div className='max-w-6xl bg-gray-200 mt-6 mx-auto p-6 text-center'>

@@ -1,8 +1,6 @@
 
 import { useSelector } from "react-redux";
-
 import { selectCartItems, selectCartTotal } from "../../store/Cart/cart.selector";
-import '../styles/checkout.css';
 import CheckoutItem from "./CheckoutItem";
 
 function Checkout()
@@ -15,9 +13,8 @@ function Checkout()
     const headingArray = [ "Item", "Description", "Qty", "Price", "Remove"];  
 
     return ( 
-        <div>
-            <div style={{padding:'15px'}}>
-            <div className="heading-container">
+        <div className="m-4">            
+            <div className="flex justify-between space-x-3 my-2 p-3">
                     {
                     headingArray.map( (each, index) =>
                         {
@@ -26,15 +23,14 @@ function Checkout()
                     }               
                     
             </div>
-            <div className="checkout-container">
+            <div className="max-h-72 overflow-auto">
             {
                 cartItems.map( each => {
                     return <CheckoutItem key={each.id} checkoutItem={each} />
                 })
             }
             </div>
-            <div style={{textAlign:"center", fontSize: '40px' }}>Total: ${totalPrice}</div>
-            </div>
+            <div className="text-2xl p-2 font-bold text-center">Total: ${totalPrice}</div>            
         </div>
      );
 }

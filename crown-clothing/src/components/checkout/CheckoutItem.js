@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../../store/Cart/cart.action';
 import { selectCartItems } from '../../store/Cart/cart.selector';
-import '../styles/checkout-item.css';
 
 function CheckoutItem( {checkoutItem})
 {
@@ -36,18 +35,16 @@ function CheckoutItem( {checkoutItem})
 
 
     return ( 
-        <div className='checkout-item-container'>
-        <div className='image-container'>
-            <img src={imageUrl} alt={name}/>
-        </div>
-        <span className='name'>{name}</span>
-        <span className='quantity'>
-            <div className='arrow' onClick={() => decrement(checkoutItem)}>&#10094;</div>
-                <span style={{marginLeft: '10px', marginRight: '10px'}}>{qty}</span>
-            <div className='arrow' onClick={() => increment(checkoutItem)}>&#10095;</div>  
-        </span>
-        <span className='price'>${price}</span>
-        <div className='remove-button' onClick={() => removeItem(checkoutItem)}>&#10005;</div>
+        <div className='flex justify-between m-4 py-4 border-b-2'>
+            <img className='w-5 h-5' src={imageUrl} alt={name}/>
+            <div className='text-sm'>{name}</div>
+            <div className='flex space-x-1'>
+                <div className='cursor-pointer' onClick={() => decrement(checkoutItem)}>&#10094;</div>
+                    <div className='font-bold'>{qty}</div>
+                <div className='cursor-pointer' onClick={() => increment(checkoutItem)}>&#10095;</div>  
+            </div>
+            <div>${price}</div>
+            <div className='font-bold cursor-pointer' onClick={() => removeItem(checkoutItem)}>&#10005;</div>
       </div>
      );
 }

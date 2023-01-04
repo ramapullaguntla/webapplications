@@ -1,4 +1,3 @@
-import '../styles/cart-dropdown.css'
 import CartItem from './CartItem';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';

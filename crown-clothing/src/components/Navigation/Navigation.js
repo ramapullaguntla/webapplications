@@ -35,7 +35,7 @@ const Navigation = () =>
 
     return (
         // creating the top Navigation section        
-        <div className='relative max-w-7xl mx-auto min-h-screen'>
+        <div className='max-w-7xl mx-auto min-h-screen flex flex-col justify-between'>
             {/* Navigation Bar */}
             <div className=" bg-gray-400  px-2 py-4 flex justify-between relative">
                 <div className='flex items-center space-x-4'>
@@ -43,7 +43,7 @@ const Navigation = () =>
                     <div className='text-xl font-bold'>Welcome to Crown Clothing</div>
                 </div>
                 
-                <div className="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                <div className="flex flex-col items-center space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                     <Link to='/shop' >Shop</Link>                
                     <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
                     <span onClick={toggleState}><CartIcon /></span>
@@ -51,7 +51,7 @@ const Navigation = () =>
                 <div className='absolute top-32 right-2 md:top-12'>{ isOpen && <CartDropDown /> }</div>
             </div>
             {/* Help section */}
-            <div className='max-w-6xl bg-gray-200 mt-6 mx-auto p-6 text-center'>
+            <div className='bg-gray-200 m-4 rounded-lg p-6 text-center'>
                 <h3 className='text-4xl font-sans '>How can we help?</h3>
                 <input className='w-full rounded-xl p-4 m-2' type='search' placeholder='Search' />
             </div>
@@ -59,7 +59,7 @@ const Navigation = () =>
             <Outlet/>
             
             {/* Footer */}
-            <div className='w-full flex flex-col items-center space-y-4 text-md py-4 font-medium bg-slate-800 text-white md:absolute md:bottom-0 md:flex-row md:space-y-0 md:justify-around'>           
+            <div className='w-full  flex flex-col items-center space-y-4 text-md py-6 font-medium bg-slate-800 text-white  md:flex-row md:space-y-0 md:justify-around'>           
                 <div>Abstract</div>
                 <div>Resources</div>
                 <div>Community</div>

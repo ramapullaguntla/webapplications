@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import {ReactComponent as HamburgerIcon} from '../../assets/icon-hamburger.svg'
+import {ReactComponent as CloseIcon} from '../../assets/icon-close.svg'
 
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
@@ -62,7 +63,9 @@ const Navigation = () =>
                 
                 <div className='flex items-center space-x-4 md:hidden'>                    
                     <div onClick={toggleState}><CartIcon /></div>
-                    <div className='cursor-pointer py-1 w-5 h-5' onClick={handleHamIcon}><HamburgerIcon  /></div>
+                    <div className='cursor-pointer py-1 w-5 h-5' onClick={handleHamIcon}>
+                       { showSignScreen ?  <CloseIcon  /> : <HamburgerIcon />}
+                    </div>
                 </div>
 
                 <div className="hidden md:flex md:flex-row md:items-center md:space-x-4">

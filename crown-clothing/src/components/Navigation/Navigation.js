@@ -40,17 +40,9 @@ const Navigation = () =>
 
     const handleHamIcon = () =>
     {        
-        setShowSignScreen(prev =>
-            {
-                console.log('previous showSign: ', prev);
-                return !prev;
-            });
-
-       
+        setShowSignScreen(prev => !prev);            
     }
-
-    console.log('showSign: ', showSignScreen);
-
+    
     return (
         // creating the top Navigation section        
         <div className='max-w-7xl mx-auto min-h-screen font-Poppins flex flex-col justify-between'>

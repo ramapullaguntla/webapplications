@@ -1,18 +1,17 @@
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import {ReactComponent as ShoppingCart} from '../../assets/shopping-bag.svg';
-import { CartContext } from '../../context/CartContext';
-import '../styles/cart-icon.css';
+import { selectCartCount } from '../../store/Cart/cart.selector';
 
 
 
 const CartIcon = () =>
-{
-    const { cartCount } = useContext(CartContext);    
+{    
+    const cartTotal = useSelector(selectCartCount);
 
     return (
-        <div className='cart-icon-container'>
+        <div className='cursor-pointer relative text-white w-10 h-10'>
             <ShoppingCart />
-            <span className='item-count'>{cartCount}</span>
+            <span className='text-sm font-bold absolute right-4 top-3'>{cartTotal}</span>
         </div>
     );
 }

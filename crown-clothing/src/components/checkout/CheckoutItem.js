@@ -1,45 +1,50 @@
-import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
-import '../styles/checkout-item.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, removeFromCart } from '../../store/Cart/cart.action';
+import { selectCartItems } from '../../store/Cart/cart.selector';
 
 function CheckoutItem( {checkoutItem})
 {
-    const { addItemToCart, removeItemFromCart } = useContext(CartContext);
+   // const { addItemToCart, removeItemFromCart } = useContext(CartContext);
 
+    const cartItems = useSelector(selectCartItems);
+    const dispatch = useDispatch();    
     const increment = (cartitem) =>
     {
         console.log(cartitem);
-        addItemToCart(cartitem);
+               
+        var addToCartAction = addToCart(cartitem, cartItems);
+        dispatch(addToCartAction);
     }
 
     const decrement = (cartitem) =>
     {
         console.log(cartitem);
-        removeItemFromCart(cartitem, false);
+
+        var removeFromCartAction = removeFromCart(cartitem, cartItems, false);
+        dispatch(removeFromCartAction);
     }
 
     const removeItem = (cartitem) =>
     {
         console.log(cartitem);
-        removeItemFromCart(cartitem, true); //remove the item completely
+        var clearItemAction = removeFromCart(cartitem, cartItems, true);
+        dispatch(clearItemAction);
     }
 
     const { name, imageUrl, price, qty} = checkoutItem;
 
 
     return ( 
-        <div className='checkout-item-container'>
-        <div className='image-container'>
-            <img src={imageUrl} alt={name}/>
-        </div>
-        <span className='name'>{name}</span>
-        <span className='quantity'>
-            <div className='arrow' onClick={() => decrement(checkoutItem)}>&#10094;</div>
-                <span style={{marginLeft: '10px', marginRight: '10px'}}>{qty}</span>
-            <div className='arrow' onClick={() => increment(checkoutItem)}>&#10095;</div>  
-        </span>
-        <span className='price'>${price}</span>
-        <div className='remove-button' onClick={() => removeItem(checkoutItem)}>&#10005;</div>
+        <div className='flex justify-between m-4 py-4 border-b-2'>
+            <img className='w-5 h-5' src={imageUrl} alt={name}/>
+            <div className='text-sm'>{name}</div>
+            <div className='flex space-x-1'>
+                <div className='cursor-pointer' onClick={() => decrement(checkoutItem)}>&#10094;</div>
+                    <div className='font-bold'>{qty}</div>
+                <div className='cursor-pointer' onClick={() => increment(checkoutItem)}>&#10095;</div>  
+            </div>
+            <div>${price}</div>
+            <div className='font-bold cursor-pointer' onClick={() => removeItem(checkoutItem)}>&#10005;</div>
       </div>
      );
 }

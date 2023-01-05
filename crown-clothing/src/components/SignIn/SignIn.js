@@ -52,14 +52,15 @@ const SignIn = () =>
 
     return (
        <div>        
-        <form onSubmit={submitform} className="form-container">
+        <form onSubmit={submitform} className="flex flex-col items-center space-y-5 ">
             
             <FormInput label='Email' type='email' displayName='email' changeHandler={handleChange} value={email}/>
-
-            <FormInput label='Password' type='password' displayName='password' changeHandler={handleChange} value={password}/>                      
-
-            <button style={{ margin: "20px"}} type="submit">Sign In</button>
-            <button style={{ margin: "20px"}} onClick={googleLogin} type="button">Google SignIN</button>
+            <FormInput label='Password' type='password' displayName='password' changeHandler={handleChange} value={password}/>
+            
+            <div className="space-x-2">
+                <button className="bg-slate-500 rounded-md text-black py-1 text-center" type="submit">Sign In</button>
+                <button className="bg-slate-500 rounded-md text-black py-1 text-center" onClick={googleLogin} type="button">Google SignIn</button>
+            </div>                    
        </form>
         </div>);
 }

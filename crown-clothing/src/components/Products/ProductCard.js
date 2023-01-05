@@ -1,25 +1,25 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../store/Cart/cart.action";
+import { selectCartItems } from "../../store/Cart/cart.selector";
+
 
 const ProductCard = ({product}) =>
 {
-    const { addItemToCart} = useContext(CartContext);
+    const cartItems = useSelector(selectCartItems);
+    const dispatch = useDispatch();
 
-    const addThisToCart = () => 
-    {      
-        addItemToCart(product);
-        
-    }
 
+     const addThisToCart = () =>
+     {        
+        const addToCartAction = addToCart(product, cartItems);
+        dispatch(addToCartAction);
+     }
+               
     return(
-        <div style={{height: '100px', width: '120px', margin: '40px'}}>
-            <img src={product.imageUrl} alt={product.name} style={{height: '80px', width: '80px'}}></img>
-            <div><span>{product.name}</span></div>
-            
-            <div><span>${product.price}</span></div>
-            <div>
-                <button onClick={addThisToCart}>Add To Cart</button>
-            </div>
+        <div className="flex flex-col items-center p-3 mb-5">
+            <img className="w-20 h-20" src={product.imageUrl} alt={product.name}></img>
+            <div className="text-sm">{product.name} - ${product.price}</div>                   
+            <button className="bg-slate-500 rounded-md text-black py-1 text-center shadow-md hover:bg-white hover:border-2 hover:border-gray-400" onClick={addThisToCart}>Add To Cart</button>
         </div>
     );
 };

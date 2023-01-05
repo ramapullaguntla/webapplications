@@ -1,17 +1,16 @@
 .cart-dropdown-container {
   position: absolute;
-  width: 180px;
-  height: 230px;
+  width: 200px;
+  height: 280px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 5px;
   border: 1px solid black;
   background-color: white;
   top: 90px;
-  right: 30px;
-  z-index: 5;
-
-  
+  right: 20px;
+  z-index: 5;  
+  color: black;
 }
 
 .empty-message {
@@ -20,12 +19,38 @@
 }
 
 .cart-items {
-  height: 240px;
+  height: 280px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow: auto;
 }
 
-button {
-  margin-top: auto;
+.cart-dropdown-container > button
+{  
+  align-self: center;
+}
+
+.each-cart-item
+{
+   font-size: 13px;
+   margin-bottom: 10px;
+   width: 140px;
+   display: flex;
+   flex-direction: column;
+   border-bottom: 1px solid gray;
+}
+
+
+.each-qty-price
+{
+  
+  align-self: center;
+}
+
+.cart-name-and-image
+{
+   display: flex;
+   justify-content: space-around;
+   
 }

@@ -1,14 +1,12 @@
-
-
 const CartItem = ({item}) =>
 {
    return (
-    <div style={{fontSize: '15px'}}>
-        <div style={{display:'flex', alignContent:'center'}}>
-            <img style={{height:'20px', width:'20px', marginRight: '5px'}} src={item.imageUrl} alt={item.name}></img>
-            <div>{item.name}</div>
+    <div className='flex flex-col items-center space-y-1 mb-2 border-b-2 border-b-gray-300'>
+        <div className='flex items-center space-x-2'>
+            <img className='w-3 h-3' src={item.imageUrl} alt={item.name}></img>
+            <div className='text-sm font-thin'>{item.name}</div>  
         </div>
-        <div>{item.qty} X {item.price}</div>
+        <div className='text-xs font-thin'>{item.qty} X {item.price}</div>
     </div>
    );
 }

@@ -3,8 +3,7 @@
     display: flex;    
     justify-content: flex-start;
     flex-wrap: wrap;
-    height: 75vh;    
-    margin: 10px;
-    background-color: antiquewhite;
+    height: 75vh;        
+    background-color: lightgray;
     padding: 10px;
 }

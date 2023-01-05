@@ -65,7 +65,7 @@ const Navigation = () =>
                     <div className='cursor-pointer py-1 w-5 h-5' onClick={handleHamIcon}><HamburgerIcon  /></div>
                 </div>
 
-                <div className="hidden md:flex md:flex-row md:space-x-4">
+                <div className="hidden md:flex md:flex-row md:items-center md:space-x-4">
                     <Link to='/shop' >Shop</Link>                
                     <Link to='/auth'>{ currentUser ? <span onClick={logOut}>Sign Out</span> : <span>Sign In</span>}</Link>
                     <span onClick={toggleState}><CartIcon /></span>

@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import '../styles/CategoryItem.css'
 
 const CategoryItem = ({item}) =>
 {
@@ -9,10 +8,10 @@ const CategoryItem = ({item}) =>
         navigate(item.route);
     }
     return(
-        <div className="category-item" style={{ display:'flex', justifyContent:'center', backgroundImage: `url(${item.imageUrl})`}}>
-            <div className='category-item-body' onClick={navigateHandler}>
-            <h1>{item.title}</h1>
-             <p>Shop Now</p>
+        <div className="flex flex-col items-center p-14 text-center" style={{ backgroundImage: `url(${item.imageUrl})`}}>
+            <div className='cursor-pointer border-2 border-gray-600 p-4' onClick={navigateHandler}>
+                <h1 className='text-2xl font-bold uppercase'>{item.title}</h1>
+                <p className='text-lg font-semibold'>Shop Now</p>
             </div>
         
         </div>

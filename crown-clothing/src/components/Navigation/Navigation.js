@@ -58,7 +58,7 @@ const Navigation = () =>
             <div className=" bg-gray-400  px-2 py-4 flex justify-between items-center relative">
                 <div className='flex items-center space-x-4'>
                     <Link to='/' ><CrownLogo /></Link>
-                    <div className='text-xl font-bold'>Welcome to Crown Clothing</div>
+                    <div className='text-xl font-semibold'>Welcome to Crown Clothing</div>
                 </div>
                 
                 <div className='flex items-center space-x-4 md:hidden'>                    

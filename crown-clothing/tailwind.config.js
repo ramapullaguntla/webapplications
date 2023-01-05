@@ -4,7 +4,12 @@ module.exports = {
     "./src/**/*.{js, jsx, ts, tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+         Poppins : ['Poppins', 'sans-serif'],
+         OpenSans : ['Open Sans', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }

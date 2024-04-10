@@ -23,6 +23,7 @@ function Checkout()
                         })
                     }                                   
             </div>
+            
             <div className="max-h-72 overflow-auto">
             {
                 cartItems.map( each => {

@@ -3,6 +3,9 @@ import PhotoGallery from "./components/PhotoGallery";
 import {Routes, Route} from 'react-router-dom';
 import Navigation from "./components/Navigation";
 import { useEffect, useState } from "react";
+import Blog from "./components/Blog";
+import BlogForm from "./forms/BlogForm";
+import PhotoGame from "./components/PhotoGame";
 
 function App() {
 
@@ -15,7 +18,7 @@ function App() {
       return images;
     }
 
-    const images = importAll(require.context('./assets', false, /\.(png|jpe?g|svg)$/)); 
+    const images = importAll(require.context('./assets/photos', false, /\.(png|jpe?g|svg)$/)); 
 
     const arrayImages = [];
     Object.keys(images).map((image, index) =>  arrayImages.push(images[image])); 
@@ -28,7 +31,10 @@ function App() {
     <Routes>
           <Route path="/" element={ <Navigation />}>
               <Route index element= { <HeroSection/> }></Route>
-              <Route path="/photos" element= { <PhotoGallery photos={imageArray} /> } />                
+              <Route path="/blogs" element= { <Blog /> } />  
+              <Route path="/addblog" element= { <BlogForm /> } />    
+              <Route path="/photos" element= { <PhotoGallery photos={imageArray} /> } />   
+              <Route path="/playgame" element= { <PhotoGame /> } />                
             </Route>
     </Routes>   
   );

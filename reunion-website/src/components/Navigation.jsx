@@ -6,9 +6,9 @@ const Navigation = () =>
 {
     return (
         <div className="max-w-7xl max-h-max mx-auto flex flex-col justify-around">
-            <Header />           
-                <Outlet />
-            <Footer/>
+            <Header />
+                 <Outlet />                         
+            <Footer className="justify-end"/>
         </div>
     );
 };

@@ -4,6 +4,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ['Barlow Semi Condensed', 'sans-serif']       
+    },
+
     extend: {},
   },
   plugins: [],

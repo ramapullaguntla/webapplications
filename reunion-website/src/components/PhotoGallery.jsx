@@ -14,7 +14,7 @@ const PhotoGallery = (props) =>
   const [showModal, setShowModal] = useState(false);
 
   const openModal = (index) => {
-    setCurrentImageIndex(index);
+    setCurrentImageIndex(index + ((currentPage - 1) * pageSize));
     setShowModal(true);
   };
 

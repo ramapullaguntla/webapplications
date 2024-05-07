@@ -80,16 +80,16 @@ const PhotoGallery = (props) =>
        <div className="my-10 p-3"> 
           {renderImages()}
           <div className="flex justify-center my-4 p-2 max-w-3xl mx-auto">
-                <button className="bg-blue-500 px-5 rounded-md mx-5 text-white" onClick={() => setPage("First")}>First</button>
-                <button className="bg-blue-500 px-5 rounded-md mx-5 text-white" onClick={() => setPage("Previous")}>Previous</button>
-                <button className="bg-blue-500 px-5 rounded-md mx-5 text-white" onClick={() => setPage("Next")}>Next</button>
-                <button className="bg-blue-500 px-5 rounded-md mx-5  text-white" onClick={() => setPage("Last")}>Last</button>
+                <button className="bg-blue-500 px-4 rounded-md mx-2 text-white" onClick={() => setPage("First")}>First</button>
+                <button className="bg-blue-500 px-4 rounded-md mx-2 text-white" onClick={() => setPage("Previous")}>Previous</button>
+                <button className="bg-blue-500 px-4 rounded-md mx-2 text-white" onClick={() => setPage("Next")}>Next</button>
+                <button className="bg-blue-500 px-4 rounded-md mx-2  text-white" onClick={() => setPage("Last")}>Last</button>
             </div>
           {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 space-x-4">
           <span className="absolute top-5 right-5 text-white text-3xl cursor-pointer" onClick={closeModal}>&times;</span>
           <div className="text-white text-4xl cursor-pointer" onClick={prevImage}>&#10094;</div>
-          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="w-96 h-96 md:w-[576px] md:h-[576px] lg:w-[730px] lg:h-[730px]" />          
+          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="w-80 h-80 md:w-[576px] md:h-[576px] lg:w-[730px] lg:h-[730px]" />          
           <div className="text-white text-4xl cursor-pointer" onClick={nextImage}>&#10095;</div>
         </div>
       )}

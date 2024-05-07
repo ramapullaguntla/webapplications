@@ -5,10 +5,10 @@ import Footer from "./Footer";
 const Navigation = () =>
 {
     return (
-        <div className="max-w-7xl max-h-max mx-auto flex flex-col justify-around">
+        <div className="max-w-7xl mx-auto flex flex-col  min-h-screen">
             <Header />
-                 <Outlet />                         
-            <Footer className="justify-end"/>
+                 <div className="flex-1"><Outlet/></div>                         
+            <div><Footer /></div>
         </div>
     );
 };

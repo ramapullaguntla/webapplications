@@ -5,7 +5,7 @@ const PhotoGallery = (props) =>
 
   const [currentPage, setCurrentPage] = useState(1);
 
-    const pageSize= 9;
+    const pageSize= 8;
     
     var totalPages = Math.ceil(props.photos.length / pageSize);
 
@@ -37,10 +37,10 @@ const PhotoGallery = (props) =>
         
         var pageList = props.photos.filter((pr, index) => index >= startIndex && index < startIndex + pageSize);        
         return (
-            <div className="grid grid-cols-3 gap-2">              
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-3">              
                 {pageList.map((image, index) => (
                     <div key={index}>
-                        <img src={image} alt={`Image ${index}`} className="min-w-60 h-60 rounded-md cursor-pointer" onClick={() => openModal(index)}  />
+                        <img src={image} alt={`Image ${index}`} className="min-w-50 h-50 rounded-md cursor-pointer" onClick={() => openModal(index)}  />
                     </div>
                   ))}
             </div>

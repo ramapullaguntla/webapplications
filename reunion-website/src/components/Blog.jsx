@@ -18,7 +18,7 @@ const Blog = () => {
   return (
     <div className='bg-slate-50 my-3 flex flex-col items-center'>
       <h2 className='text-2xl font-bold text-center my-3'>See what your fellow students wrote</h2>
-      <div className='p-5 grid gap-2 grid-cols-1 md:grid-cols-3'>
+      <div className='p-5 grid gap-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
         {blogPosts.map((post) => (
             
             <div class="flex flex-col flex-wrap items-start space-y-3 p-5 rounded-lg bg-gray-700">                                      
@@ -28,7 +28,7 @@ const Blog = () => {
                         </div>
                     </div>
                     <p class="text-xl text-gray-100">{post.title}</p>
-                    <p class="text-sm text-gray-300 leading-6 line-clamp-5">{post.content}</p>
+                    <p class="text-sm text-gray-300 leading-6 line-clamp-5 hover:line-clamp-none">{post.content}</p>
                 </div>
         ))}
       </div>      

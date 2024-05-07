@@ -7,6 +7,7 @@ import Blog from "./components/Blog";
 import BlogForm from "./forms/BlogForm";
 import PhotoGame from "./components/PhotoGame";
 import GameIntro from "./components/GameIntro";
+import GameOver from "./components/GameOver";
 
 function App() {
 
@@ -36,7 +37,8 @@ function App() {
               <Route path="/addblog" element= { <BlogForm /> } />    
               <Route path="/photos" element= { <PhotoGallery photos={imageArray} /> } />   
               <Route path="/gameintro" element= { <GameIntro /> } />
-              <Route path="/playgame" element= { <PhotoGame /> } />                
+              <Route path="/playgame" element= { <PhotoGame /> } />     
+              <Route path="/gameover" element= { <GameOver /> } />             
             </Route>
     </Routes>   
   );

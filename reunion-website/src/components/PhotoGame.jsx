@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { gameInfo } from '../photogame';
+import { useNavigate } from 'react-router-dom';
 
 const info = [
     {
@@ -41,8 +42,7 @@ const PhotoGame = () => {
   const [score, setScore] = useState(0);
   const [counter, setCounter] = useState(0);
 
-  const [tracker, setTracker] = useState([]);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchGame();
@@ -53,6 +53,12 @@ const PhotoGame = () => {
      
       var randomNum = Math.floor(Math.random() * 26);
 
+      // while(tracker.find(n => n === randomNum) !== undefined)
+      // {
+      //     randomNum = Math.floor(Math.random() * 26); 
+      // }
+
+      // setTracker([...tracker, randomNum]);
       const data = gameInfo[randomNum];
            
       const imagelocation = require('../assets/childhoodphotos/' + data.imageUrl);
@@ -74,13 +80,15 @@ const PhotoGame = () => {
     // Fetch a new game after answering
     fetchGame();
 
-    setCounter(counter + 1);
+    
     if(counter === 9)
     {
-        alert(`Game Over! Your score: ${score}`);
+       // alert(`Game Over! Your score: ${score}`);
+       navigate('/gameover',{state:{finalscore: score}});
         setScore(0);
         setCounter(0);
     }
+    setCounter(counter + 1);
   };
 
   return (

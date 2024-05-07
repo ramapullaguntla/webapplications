@@ -89,7 +89,7 @@ const PhotoGallery = (props) =>
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 space-x-4">
           <span className="absolute top-5 right-5 text-white text-3xl cursor-pointer" onClick={closeModal}>&times;</span>
           <div className="text-white text-4xl cursor-pointer" onClick={prevImage}>&#10094;</div>
-          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="max-w-3xl max-h-3xl" />          
+          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="w-96 h-96 md:w-[576px] md:h-[576px] lg:w-[730px] lg:h-[730px]" />          
           <div className="text-white text-4xl cursor-pointer" onClick={nextImage}>&#10095;</div>
         </div>
       )}

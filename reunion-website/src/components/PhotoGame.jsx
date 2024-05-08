@@ -9,7 +9,10 @@ const PhotoGame = () => {
   const [score, setScore] = useState(0);
   const [counter, setCounter] = useState(0);
 
+  const [trackerArray, setTracker] = useState([]);
   const navigate = useNavigate();
+
+  
 
   useEffect(() => {
     fetchGame();
@@ -18,7 +21,14 @@ const PhotoGame = () => {
   const fetchGame = () => {
     try {
      
-      var randomNum = Math.floor(Math.random() * 26);
+      var randomNum = Math.floor(Math.random() * 25);
+       
+      while(trackerArray.length > 0 && trackerArray.find(v => v === randomNum))
+      {
+         randomNum = Math.floor(Math.random() * 25);
+      }
+
+      setTracker([...trackerArray, randomNum]);
       
       const data = gameInfo[randomNum];
            
@@ -36,7 +46,7 @@ const PhotoGame = () => {
   const checkAnswer = (selectedOption) => {
     if (selectedOption === answer) {
       // Increment score if the selected option is correct
-      setScore(score + 1);
+      setScore(prev => prev + 1);
     }
     // Fetch a new game after answering
     fetchGame();

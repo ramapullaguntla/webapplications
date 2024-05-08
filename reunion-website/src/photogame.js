@@ -13,9 +13,9 @@ export const gameInfo = [
     },
     {
       "id": 3,
-      "options": ["neelima", "sharmila", "hyndavi", "vineela"],
-      "imageUrl": "neelima.png",
-      "answer" : "neelima"
+      "options": ["Neelima", "sharmila", "hyndavi", "vineela"],
+      "imageUrl": "Neelima.png",
+      "answer" : "Neelima"
     },
     {
       "id": 4,
@@ -154,13 +154,6 @@ export const gameInfo = [
       "options": ["murali", "satish", "ganesh", "rajasekhar"],
       "imageUrl": "rajasekhar.png",      
       "answer" : "rajasekhar"
-    },
-
-    {
-      "id": 26,
-      "options": ["saritha", "hyndavi", "radhika", "neelima"],
-      "imageUrl": "radhika1.png",      
-      "answer" : "radhika"
-    },
+    }
 
   ];

@@ -11,7 +11,7 @@ import GameOver from "./components/GameOver";
 
 function App() {
 
-   const [imageArray, setImages] = useState([]);
+  const [imageArray, setImages] = useState([]);
   useEffect(() =>
   {
     const importAll = (r) => {
@@ -23,9 +23,7 @@ function App() {
     const images = importAll(require.context('./assets/photos', false, /\.(png|jpe?g|svg)$/)); 
 
     const arrayImages = [];
-    Object.keys(images).map((image, index) =>  arrayImages.push(images[image])); 
-          
-    console.log("image array ", arrayImages);
+    Object.keys(images).map((image, index) =>  arrayImages.push(images[image]));           
     setImages(arrayImages);
   },[]);
 

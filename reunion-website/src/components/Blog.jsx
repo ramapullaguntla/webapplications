@@ -32,7 +32,7 @@ const Blog = () => {
                 </div>
         ))}
       </div>      
-       <Link to='/addblog'><button className="text-lg text-white my-3 p-3 bg-blue-600 rounded-md">Write your experience</button></Link>          
+       <Link to='/addblog'><button className="text-lg text-white my-3 px-2 py-2 bg-blue-600 rounded-md">Write your experience</button></Link>          
       
     </div>
   );

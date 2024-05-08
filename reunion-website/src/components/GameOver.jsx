@@ -11,11 +11,10 @@ const GameOver = () =>
                 <div className='text-xl flex space-x-5'>
                     <div>Your score :</div>
                     <div className={ location.state.finalscore > 6 ? 'text-green-500' : 'text-red-500'}>{location.state.finalscore} out of 10</div>
-                </div>
-                <div className='text-lg font-semibold'>Click the Play Again button to play again. Click Exit to go to HomePage.</div>
+                </div>                
                 <div className='flex space-x-4'>                    
                     <Link to='/playgame'><button className="bg-cyan-500 py-1 px-8 rounded-lg">Play Again</button></Link>
-                    <Link to='/'><button className="bg-cyan-500 py-1 px-8 rounded-lg">Exit</button></Link>
+                    <Link to='/'><button className="bg-cyan-500 py-1 px-8 rounded-lg">Go to Home</button></Link>
                 </div>                       
             </div>
     );

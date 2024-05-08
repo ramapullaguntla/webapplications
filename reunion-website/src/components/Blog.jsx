@@ -4,19 +4,24 @@ import { Link } from 'react-router-dom';
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = db.collection('blogPosts').onSnapshot((snapshot) => {
+
+    setIsLoading(true);
+    const getBlogs = db.collection('blogPosts').onSnapshot((snapshot) => {
       const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       console.log("blogs are ", posts);
       setBlogPosts(posts);
+    setIsLoading(false);
     });
 
-    return () => unsubscribe();
+    return () => getBlogs();
   }, []);
 
   return (
-    <div className='bg-slate-50 my-3 flex flex-col items-center'>
+    isLoading ? <div className='flex items-center space-x-2'><div>Loading...</div><div className='bg-green-700 w-3 h-3 rounded-full animate-bounce'></div></div> 
+    : <div className='bg-slate-50 my-3 flex flex-col items-center'>
       <h2 className='text-2xl font-bold text-center my-3'>See what your fellow students wrote</h2>
       <div className='p-5 grid gap-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-3'>
         {blogPosts.map((post) => (

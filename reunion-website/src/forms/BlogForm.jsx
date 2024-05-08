@@ -47,7 +47,7 @@ const BlogForm = () => {
             <textarea className='p-1 border resize-none min-w-80 min-h-60  border-gray-600 rounded-md'  id="content" value={content} onChange={(e) => setContent(e.target.value)} />
       </div>
        <div>
-           <button className="text-lg text-white my-3 px-4 bg-blue-600 rounded-md" type="submit">Submit</button>               
+           <button className="text-lg text-white my-3 px-2 py-1 bg-blue-600 rounded-md" type="submit">Submit</button>               
         </div>  
     </form>
   );

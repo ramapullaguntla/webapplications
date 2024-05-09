@@ -1,4 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
+import * as FaIcons from "react-icons/fa";
+
 
 const GameOver = (props) =>
 {
@@ -11,6 +13,15 @@ const GameOver = (props) =>
                 <div className='text-xl flex space-x-5'>
                     <div>Your score :</div>
                     <div className={ location.state.finalscore > 6 ? 'text-green-500' : 'text-red-500'}>{location.state.finalscore} out of 10</div>
+                </div>
+                <div className='flex flex-col space-y-1'>
+                    {location.state.answerInfo.map((ans, index) => (
+                        <div key={index} className='flex justify-start items-center '>
+                             <div>{index + 1}</div>
+                             <div className='min-w-24  text-center'>{ans.answer}</div>
+                             <div>{ans.isCorrect ? <FaIcons.FaCheck className='text-green-500' /> : <FaIcons.FaTimes className='text-red-500'/>}</div>
+                        </div>
+                    ))}
                 </div>                
                 <div className='flex space-x-4'>                    
                     <Link to='/playgame'><button className="bg-cyan-500 py-1 px-8 rounded-lg">Play Again</button></Link>

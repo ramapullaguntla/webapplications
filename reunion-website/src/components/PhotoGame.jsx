@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { gameInfo } from '../photogame';
 import { useNavigate } from 'react-router-dom';
-import GameOver from './GameOver'
 
 const PhotoGame = () => {
   const [photoUrl, setPhotoUrl] = useState('');
@@ -14,6 +13,8 @@ const PhotoGame = () => {
   const navigate = useNavigate();
 
   const [gameover, setGameOver] = useState(false);
+
+  const [answerHistory, setAnswerHistory] = useState([]);
   
 
   useEffect(() => {
@@ -46,14 +47,19 @@ const PhotoGame = () => {
   };
 
   const checkAnswer = (selectedOption) => {
-    if (selectedOption === answer)
-     {
-      console.log("final score before increment ", score);
-      // Increment score if the selected option is correct
-      setScore(prev => prev + 1);
 
-      console.log("final score after increment ", score);
-    }
+     var answerInfo = {
+        "answer" : answer,
+        "isCorrect": false
+     };
+
+    if (selectedOption === answer)
+     {      
+        answerInfo.isCorrect = true;
+        setScore(prev => prev + 1);      
+     }
+
+     setAnswerHistory([...answerHistory, answerInfo]);
     // Fetch a new game after answering
     fetchGame();
 
@@ -67,7 +73,7 @@ const PhotoGame = () => {
 
   const handleGameOver = () =>
   {
-    navigate('/gameover',{state:{finalscore: score}});
+    navigate('/gameover',{state:{finalscore: score, answerInfo: answerHistory }});
   }
 
   return (

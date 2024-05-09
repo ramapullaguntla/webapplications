@@ -31,8 +31,7 @@ const Blog = () => {
                         <div>
                             <div class="text-white text-md">{post.name}</div>                            
                         </div>
-                    </div>
-                    <p class="text-xl text-gray-100">{post.title}</p>
+                    </div>                    
                     <p class="text-sm text-gray-300 leading-6 line-clamp-5 hover:line-clamp-none">{post.content}</p>
                 </div>
         ))}

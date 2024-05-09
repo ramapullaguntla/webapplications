@@ -82,7 +82,7 @@ const PhotoGame = () => {
       <img className='max-w-56 max-h-56' src={photoUrl} alt="Person" />             
       <div className='flex space-x-3 justify-between'>
         {options.map((option, index) => (
-          <button className='bg-blue-500 text-white px-3 py-1 rounded-lg' key={index} onClick={() => checkAnswer(option)}>{option}</button>
+          <button className='bg-cyan-500 px-3 py-1 rounded-lg' key={index} onClick={() => checkAnswer(option)}>{option}</button>
         ))}
       </div>
       <p className='text-2xl font-bold'>Score: {score}</p>

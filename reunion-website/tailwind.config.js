@@ -8,6 +8,9 @@ module.exports = {
       sans: ['Barlow Semi Condensed', 'sans-serif']       
     },
     screens: {
+
+      'xs': '320px',
+      
       'sm': '470px',
       // => @media (min-width: 640px) { ... }
 

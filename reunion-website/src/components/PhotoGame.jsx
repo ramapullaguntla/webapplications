@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { gameInfo } from '../photogame';
 import { useNavigate } from 'react-router-dom';
+import GameOver from './GameOver'
 
 const PhotoGame = () => {
   const [photoUrl, setPhotoUrl] = useState('');
@@ -12,6 +13,7 @@ const PhotoGame = () => {
   const [trackerArray, setTracker] = useState([]);
   const navigate = useNavigate();
 
+  const [gameover, setGameOver] = useState(false);
   
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const PhotoGame = () => {
 
   const fetchGame = () => {
     try {
-     
+           
       var randomNum = Math.floor(Math.random() * 25);
        
       while(trackerArray.length > 0 && trackerArray.find(v => v === randomNum))
@@ -44,26 +46,32 @@ const PhotoGame = () => {
   };
 
   const checkAnswer = (selectedOption) => {
-    if (selectedOption === answer) {
+    if (selectedOption === answer)
+     {
+      console.log("final score before increment ", score);
       // Increment score if the selected option is correct
       setScore(prev => prev + 1);
+
+      console.log("final score after increment ", score);
     }
     // Fetch a new game after answering
     fetchGame();
 
     
     if(counter === 9)
-    {
-       // alert(`Game Over! Your score: ${score}`);
-       navigate('/gameover',{state:{finalscore: score}});
-        setScore(0);
-        setCounter(0);
+    {      
+       setGameOver(true);
     }
     setCounter(counter + 1);
   };
 
+  const handleGameOver = () =>
+  {
+    navigate('/gameover',{state:{finalscore: score}});
+  }
+
   return (
-    <div className='flex flex-col items-center space-y-5'>
+    gameover ? <div>{handleGameOver()}</div> : <div className='flex flex-col items-center space-y-5'>
       <h2 className='text-xl font-medium'>Who is this?</h2>
       <img className='max-w-56 max-h-56' src={photoUrl} alt="Person" />             
       <div className='flex space-x-3 justify-between'>

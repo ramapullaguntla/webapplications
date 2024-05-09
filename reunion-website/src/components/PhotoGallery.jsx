@@ -5,7 +5,7 @@ const PhotoGallery = (props) =>
 
   const [currentPage, setCurrentPage] = useState(1);
 
-    const pageSize= 8;
+    const pageSize= 16;
     
     var totalPages = Math.ceil(props.photos.length / pageSize);
 
@@ -89,7 +89,7 @@ const PhotoGallery = (props) =>
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 space-x-2">
           <span className="absolute top-5 right-5 text-white text-3xl cursor-pointer" onClick={closeModal}>&times;</span>
           <div className="text-white text-4xl cursor-pointer" onClick={prevImage}>&#10094;</div>
-          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="w-72 h-72 md:w-[576px] md:h-[576px] lg:w-[730px] lg:h-[730px]" />          
+          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="max-w-72 max-h-72 md:max-w-[600px] md:max-h-[600px] lg:max-w-[950px] lg:max-h-[950px]" />          
           <div className="text-white text-4xl cursor-pointer" onClick={nextImage}>&#10095;</div>
         </div>
       )}

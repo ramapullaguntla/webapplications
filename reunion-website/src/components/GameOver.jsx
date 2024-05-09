@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 
-const GameOver = () =>
+const GameOver = (props) =>
 {
     const location = useLocation();
     return (

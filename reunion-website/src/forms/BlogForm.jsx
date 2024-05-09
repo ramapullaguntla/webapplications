@@ -36,12 +36,7 @@ const BlogForm = () => {
 
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             <label htmlFor="Name" className='text-lg font-medium md:text-center'>Name:</label>
-            <input className='p-1 border border-gray-600 rounded-md' type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-      
-      
-            <label htmlFor="title" className='text-lg font-medium md:text-center'>Title:</label>
-            <input className='p-1 border border-gray-600 rounded-md' type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-      
+            <input className='p-1 border border-gray-600 rounded-md' type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />            
       
             <label htmlFor="content" className='text-lg font-medium md:text-center'>Content:</label>
             <textarea className='p-1 border resize-none min-w-80 min-h-60  border-gray-600 rounded-md'  id="content" value={content} onChange={(e) => setContent(e.target.value)} />

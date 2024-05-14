@@ -8,7 +8,7 @@ const Navigation = () =>
         <div className="max-w-7xl mx-auto flex flex-col  min-h-screen">           
             <div><Header /></div>
                  <div className="flex-1"><Outlet/></div>                         
-            <div><Footer /></div>
+            <div className=" xs:hidden sm:hidden md:block"><Footer /></div>
         </div>
     );
 };

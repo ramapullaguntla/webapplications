@@ -4,9 +4,9 @@ const VideoGallery = (props) =>
     {     
 
         return (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">              
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 ">              
                 {props.videos.map((vdo, index) => (
-                    <div key={index}>
+                    <div key={index} className="border border-gray-400">
                         <video controls>
                             <source src={vdo} type="video/mp4" />
                             Your browser does not support the video tag.

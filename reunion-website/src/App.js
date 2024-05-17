@@ -31,6 +31,8 @@ function App() {
     setImages(arrayImages);
     
     const arrayVideos = [];
+
+    console.log("videos are ", videos);
     Object.keys(videos).map((vdo, index) =>  arrayVideos.push(videos[vdo]));  
     setVideos(arrayVideos);
   },[]);

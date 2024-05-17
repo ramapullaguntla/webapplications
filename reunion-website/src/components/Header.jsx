@@ -17,7 +17,7 @@ const Header = () =>
                 </div>
             </div>
 
-            <div className="xs:block sm:block md:hidden  bg-cyan-500  mx-auto text-center">
+            <div className="xs:block sm:block md:hidden  bg-cyan-500  mx-auto text-center p-2">
                 <Link to='/'><button className="bg-cyan-500 p-2 text-lg">Home</button></Link>                                      
             </div>
         </div>

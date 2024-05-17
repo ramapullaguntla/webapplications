@@ -29,6 +29,6 @@ export const videoInfo = [
       "id": 5,
       "title": "Guvva Gorinka",
       "description" : "Bhavani and Praneeth come together to recreate this timeless masterpiece.",
-      "videoName": "GuvvaGorinka.mp4",
+      "videoName": "Guvva Gorinka.mp4",
     },    
   ];

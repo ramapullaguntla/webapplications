@@ -52,10 +52,10 @@ const PhotoGallery = (props) =>
         
         var pageList = props.photos.filter((pr, index) => index >= startIndex && index < startIndex + pageSize);        
         return (
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-3">              
+            <div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-3">              
                 {pageList.map((image, index) => (
-                    <div key={index} onTouchStart={handleTouchStart}>
-                        <img src={image} alt={`Image ${index}`} className="min-w-50 h-50 rounded-md cursor-pointer" onClick={() => openModal(index)}  />
+                    <div key={index} onTouchStart={handleTouchStart} className="h-64 overflow-hidden">
+                        <img src={image} alt={`Image ${index}`} className="w-full h-full object-cover object-top rounded-md cursor-pointer" onClick={() => openModal(index)}  />
                     </div>
                   ))}
             </div>
@@ -104,7 +104,7 @@ const PhotoGallery = (props) =>
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 space-x-2">
           <span className="absolute top-5 right-5 text-white text-3xl cursor-pointer" onClick={closeModal}>&times;</span>
           <div className="text-white text-4xl cursor-pointer" onClick={prevImage}>&#10094;</div>
-          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="max-w-72 max-h-72 md:max-w-[600px] md:max-h-[600px] lg:max-w-[950px] lg:max-h-[950px]"  />          
+          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="w-full max-h-72 md:max-w-[600px] md:max-h-[600px] lg:max-w-[950px] lg:max-h-[950px]"  />          
           <div className="text-white text-4xl cursor-pointer" onClick={nextImage}>&#10095;</div>
         </div>
       )}

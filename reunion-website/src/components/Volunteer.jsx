@@ -34,7 +34,7 @@ const Volunteer = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {volunteerList.map((event, index) => (
+                            {volunteerList.sort((a,b) => a.order - b.order).map((event, index) => (
                                 <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
                                 <td className="border border-gray-300 px-4 py-1">{event.category}</td>
                                 <td className="border border-gray-300 px-4 py-1">{event.primary}</td>

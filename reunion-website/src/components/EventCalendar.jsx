@@ -23,18 +23,18 @@ const EventCalendar = () => {
     : <div className='bg-slate-50 my-3 flex flex-col items-center'>
       <h2 className='text-xl font-bold text-center my-3'>Event Calendar for the Ganesh Chaturdi Celebration.</h2>
       <div>
-            <div className="text-xl">
+            <div className="">
                         <h2 className='text-xl font-bold mb-1 text-center'>Friday</h2>
                         <table className='tab'>
                             <thead>
                             <tr className="bg-gray-200">
                                 <th className="border border-gray-300 px-4 py-2">Name</th>
-                                <th className="border border-gray-300 px-4 py-2">Start Time</th>
-                                <th className="border border-gray-300 px-4 py-2">End Time</th>
+                                <th className="border border-gray-300 px-4 py-2">Start</th>
+                                <th className="border border-gray-300 px-4 py-2">End</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {events.filter(e => e.day === "Friday").map((event, index) => (
+                            {events.filter(e => e.day === "Friday").sort((a,b) => a.order - b.order).map((event, index) => (
                                 <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
                                 <td className="border border-gray-300 px-4 py-1">{event.name}</td>
                                 <td className="border border-gray-300 px-4 py-1">{event.startTime}</td>

@@ -24,7 +24,7 @@ const Volunteer = () => {
     : <div className='bg-slate-50 my-3 flex flex-col items-center'>
       <h2 className='text-2xl font-bold text-center my-3'>We are looking for volunteers to make this event a huge success. These are the current volunteers.</h2>
       <div>
-            <div className="text-xl">                        
+            <div className="">                        
                         <table className=''>
                             <thead>
                             <tr className="bg-gray-200">

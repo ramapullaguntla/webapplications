@@ -36,7 +36,7 @@ const Blog = () => {
                 </div>
         ))}
       </div>      
-       <Link to='/addblog'><button className="text-lg text-white my-3 px-2 py-2 bg-amber-500 rounded-md">Write your experience</button></Link>          
+       <Link to='/addblog'><button className="text-lg text-white my-3 px-2 py-2 bg-header-brown rounded-md">Write your experience</button></Link>          
       
     </div>
   );

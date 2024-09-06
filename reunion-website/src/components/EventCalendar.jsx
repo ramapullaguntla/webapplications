@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
-import { Link } from 'react-router-dom';
 
 const EventCalendar = () => {
   const [events, setEvents] = useState([]);

@@ -1,4 +1,3 @@
-import centerphoto from '../assets/olmphotos/GaneshChaturdi2024.jpg';
 import flyer from '../assets/olmphotos/GaneshFlyer.jpg';
 import { Link } from 'react-router-dom';
 

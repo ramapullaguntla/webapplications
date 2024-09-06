@@ -1,5 +1,4 @@
 import HeroSection from "./components/HeroSection";
-import PhotoGallery from "./components/PhotoGallery";
 import {Routes, Route} from 'react-router-dom';
 import Navigation from "./components/Navigation";
 import { useEffect, useState } from "react";
@@ -16,7 +15,7 @@ import Volunteer from "./components/Volunteer";
 function App() {
 
   const [imageArray, setImages] = useState([]);
-  const [videoArray, setVideos] = useState([]);
+  const [videoArray, setVideos] = useState([]);  
   useEffect(() =>
   {
     const importAll = (r) => {
@@ -38,6 +37,7 @@ function App() {
     console.log("videos are ", videos);
     Object.keys(videos).map((vdo, index) =>  arrayVideos.push(videos[vdo]));  
     setVideos(arrayVideos);
+
   },[]);
 
   return (    

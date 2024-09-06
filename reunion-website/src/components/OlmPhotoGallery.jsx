@@ -1,101 +1,87 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import tb1 from '../assets/olmphotos/GaneshIdolMaking/GaneshChaturdi2024.jpg';
 
-const OlmPhotoGallery = (props) =>
-{
+const folders = [
+  { name: 'GaneshIdolMaking'},
+  { name: 'KidsPerformance', },
+];
 
-  const [currentPage, setCurrentPage] = useState(1);
+const OlmPhotoGallery = () => {
+  const [selectedFolder, setSelectedFolder] = useState(null);
+  const [photos, setPhotos] = useState([]);
 
-    const pageSize= 16;
+  // Load images from the selected folder
+  useEffect(() => {
+
+    const importAll = (r) => {
+      let images = {};
+      r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+      return images;
+    }
     
-  var totalPages = Math.ceil(props.photos.length / pageSize);
 
-  const length = props.photos.length;
-  const [currentImageIndex, setCurrentImageIndex] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-
-  const handleTouchStart = (e) => {
-    const touchStartX = e.touches[0].clientX;
-    const handleTouchMove = (moveEvent) => {
-      const touchEndX = moveEvent.touches[0].clientX;
-      const deltaX = touchStartX - touchEndX;
-      if (deltaX > 50) { // Swipe threshold
-        nextImage();
-      } else if (deltaX < -50) { // Swipe threshold
-        prevImage();
-      }
-      document.removeEventListener('touchmove', handleTouchMove);
-    };
-    document.addEventListener('touchmove', handleTouchMove);
-  };
-
-  const openModal = (index) => {
-    setCurrentImageIndex(index + ((currentPage - 1) * pageSize));
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + length - 1) % length);
-  };
-  
-    
-    const renderImages = () =>
-    {      
-        var startIndex = (currentPage - 1) * pageSize;
+    if (selectedFolder) {
+      
+      console.log("selected folder ", selectedFolder);
+      const loadImages = async () => {
+      
+        const images = importAll(require.context(`../assets/olmphotos/GaneshIdolMaking`, false, /\.(png|jpe?g|svg)$/));  
         
-        var pageList = props.photos.filter((pr, index) => index >= startIndex && index < startIndex + pageSize);        
-        return (
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-3">              
-                {pageList.map((image, index) => (
-                    <div key={index} onTouchStart={handleTouchStart}>
-                        <img src={image} alt={`Image ${index}`} className="min-w-50 h-50 rounded-md cursor-pointer" onClick={() => openModal(index)}  />
-                    </div>
-                  ))}
+        console.log("selected images ", images);
+
+        const arrayImages = [];
+        Object.keys(images).map((image, index) =>  arrayImages.push(images[image]));  
+        setPhotos(arrayImages);        
+      };
+      loadImages();
+    }
+  }, [selectedFolder]);
+
+  return (
+    <div className="container mx-auto p-4">
+      {/* Display Folders */}
+      {!selectedFolder && (
+        <div className="grid grid-cols-4 gap-2">
+          {folders.map((folder, index) => (
+            <div
+              key={folder.name}
+              className="cursor-pointer flex-col items-center border border-red-500"
+              onClick={() => setSelectedFolder(folder.name)}
+            >
+              <img
+                src={tb1}
+                alt={folder.name}
+                className="w-60 h-48 object-cover"
+              />
+              <p className="text-center mt-2 font-semibold">{folder.name}</p>
             </div>
-           
-          );        
-    }
+          ))}
+        </div>
+      )}
 
-    const setPage = (buttonType) =>
-    {
-        if(buttonType === "First")
-        {
-            setCurrentPage(1);
-        }
-        else if(buttonType === "Last")
-        {
-            setCurrentPage(totalPages);
-        }
-        else if(buttonType === "Previous")
-        {
-            if(currentPage > 1)
-            {
-               setCurrentPage((page) => page - 1);
-            }
-        }
-        else if(buttonType === "Next")
-        {
-            if(currentPage < totalPages)
-            {
-                setCurrentPage((page) => page + 1);
-            }
-           
-        }
-    }
-
-    return (
-            
-       <div className="my-10 p-3"> 
-          <p className="text-xl font-medium">Welcome to Ganesh Chaturdi Photo Gallery. This page will be updated with the photos throughout the event.</p>
-       </div>
-    );
+      {/* Display Photos in Selected Folder */}
+      {selectedFolder && (
+        <div>
+          <button
+            className="mb-4 p-2 bg-gray-500 text-white rounded"
+            onClick={() => setSelectedFolder(null)}
+          >
+            Back to Folders
+          </button>
+          <div className="grid grid-cols-3 gap-4">
+            {photos.map((photo, index) => (
+              <img
+                key={index}
+                src={photo}
+                alt={`Photo ${index + 1}`}
+                className="w-full h-48 object-cover"
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default OlmPhotoGallery;

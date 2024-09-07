@@ -57,7 +57,7 @@ const EventCalendar = () => {
                             <tbody>
                             {events.filter(e => e.day === "Saturday").sort((a,b) => a.order - b.order).map((event, index) => (
                                 <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
-                                <td className="border border-gray-300 px-4 py-1">{event.name}</td>
+                                <td className={event.name === "Kids performances and Laddu auction" ? "border border-gray-300 px-4 py-1 font-bold" : "border border-gray-300 px-4 py-1"}>{event.name}</td>
                                 <td className="border border-gray-300 px-4 py-1">{event.startTime}</td>
                                 <td className="border border-gray-300 px-4 py-1">{event.endTime}</td>
                             </tr>

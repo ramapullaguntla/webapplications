@@ -1,0 +1,66 @@
+.header
+{
+    height: 40px;
+    padding:20px;
+    font-size: 20px;
+    background: lightgreen;
+    font-weight:bold;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    
+}
+
+.footer
+{
+    height: 40px;
+    padding:20px;
+    
+    background: lightgray;
+    
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    
+}
+
+.links
+{
+    font-size:15px;
+    display: flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    width:50%;
+}
+
+.content
+{    
+    padding: 5px;
+    font-size:10px;    
+    text-align:center;
+}
+
+.testimonials
+{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.card
+{
+    margin:10px;
+    background-color:lightgray;
+    border-radius:5px;
+    padding:10px;
+    max-width: 150px;
+    min-height: 120px;
+}
+
+.container
+{    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}

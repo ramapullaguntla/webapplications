@@ -28,7 +28,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        'header-brown': '#AA6D58'
+        'header-brown': '#B5828C',
+        
       }
     },
   },

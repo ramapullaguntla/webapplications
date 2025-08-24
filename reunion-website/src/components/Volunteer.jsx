@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
-import { Link } from 'react-router-dom';
 
 const Volunteer = () => {
   const [volunteerList, setVolunteers] = useState([]);
@@ -9,9 +8,8 @@ const Volunteer = () => {
   useEffect(() => {
 
     setIsLoading(true);
-    const getBlogs = db.collection('olmVolunteers').onSnapshot((snapshot) => {
-      const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      console.log("blogs are ", posts);
+    const getBlogs = db.collection('olmvolunteers2025').onSnapshot((snapshot) => {
+      const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));      
       setVolunteers(posts);
     setIsLoading(false);
     });
@@ -29,16 +27,14 @@ const Volunteer = () => {
                             <thead>
                             <tr className="bg-gray-200">
                                 <th className="border border-gray-300 px-4 py-2">Category</th>
-                                <th className="border border-gray-300 px-4 py-2">Primary Volunteer</th>
-                                <th className="border border-gray-300 px-4 py-2">Other Volunteers</th>
+                                <th className="border border-gray-300 px-4 py-2">Volunteers</th>                                
                             </tr>
                             </thead>
                             <tbody>
                             {volunteerList.sort((a,b) => a.order - b.order).map((event, index) => (
                                 <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
-                                <td className="border border-gray-300 px-4 py-1">{event.category}</td>
-                                <td className="border border-gray-300 px-4 py-1">{event.primary}</td>
-                                <td className="border border-gray-300 px-4 py-1">{event.others}</td>
+                                <td className="border border-gray-300 px-4 py-1 font-semibold">{event.category}</td>
+                                <td className="border border-gray-300 px-4 py-1">{event.volunteers}</td>                               
                             </tr>
                             ))}
                             </tbody>

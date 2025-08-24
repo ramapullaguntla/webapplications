@@ -12,12 +12,11 @@ const Header = () =>
                 <Link to='/'><div>Home</div></Link>
                 <Link to='/photos'><div>Photos</div></Link>  
                 <Link to='/events'><div>Events</div></Link> 
-                <Link to='/volunteer'><div>Volunteer</div></Link>              
-                <Link to='/olmblogs'><div>Testimonials</div></Link>                   
+                <Link to='/volunteer'><div>Volunteer</div></Link>                                             
                 </div>
             </div>
 
-            <div className="xs:block sm:block md:hidden  bg-header-brown  mx-auto text-center p-2 flex">
+            <div className="xs:block sm:block md:hidden  bg-header-brown  mx-auto text-center p-1 flex">
                 <Link to='/'><button className="bg-header-brown p-2 text-lg">Home</button></Link>                                                     
             </div>
         </div>

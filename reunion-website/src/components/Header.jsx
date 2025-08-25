@@ -7,7 +7,7 @@ const Header = () =>
         <div className='text-gray-50'>
             <div className="xs:hidden sm:hidden  bg-header-brown md:flex justify-between items-center text-center p-2 rounded-b-md">
                 <div><Link to='/'><img src={spslogo} alt="logo" className='rounded-lg w-24 h-20'/></Link></div>            
-                <div className="text-3xl hidden md:block">Oaklawn Mills Ganesh Chaturdi Celebrations</div>
+                <div className="text-3xl hidden md:block">Oaklawn Mills Ganesh Chaturdi Celebrations 2025</div>
                 <div className="flex justify-between space-x-3 text-lg mx-1">
                 <Link to='/'><div>Home</div></Link>
                 <Link to='/photos'><div>Photos</div></Link>  

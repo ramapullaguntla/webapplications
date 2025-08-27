@@ -1,115 +1,198 @@
 import React, { useState } from "react";
+import {PhotoProvider, PhotoView} from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+import { FcFolder} from 'react-icons/fc';
 
 const PhotoGallery = (props) =>
 {
-
-  const [currentPage, setCurrentPage] = useState(1);
-
-    const pageSize= 16;
-    
-  var totalPages = Math.ceil(props.photos.length / pageSize);
-
-  const length = props.photos.length;
-  const [currentImageIndex, setCurrentImageIndex] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-
-  const handleTouchStart = (e) => {
-    const touchStartX = e.touches[0].clientX;
-    const handleTouchMove = (moveEvent) => {
-      const touchEndX = moveEvent.touches[0].clientX;
-      const deltaX = touchStartX - touchEndX;
-      if (deltaX > 50) { // Swipe threshold
-        nextImage();
-      } else if (deltaX < -50) { // Swipe threshold
-        prevImage();
-      }
-      document.removeEventListener('touchmove', handleTouchMove);
-    };
-    document.addEventListener('touchmove', handleTouchMove);
-  };
-
-  const openModal = (index) => {
-    setCurrentImageIndex(index + ((currentPage - 1) * pageSize));
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + length - 1) % length);
-  };
   
-    
-    const renderImages = () =>
-    {      
-        var startIndex = (currentPage - 1) * pageSize;
-        
-        var pageList = props.photos.filter((pr, index) => index >= startIndex && index < startIndex + pageSize);        
-        return (
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-3">              
-                {pageList.map((image, index) => (
-                    <div key={index} onTouchStart={handleTouchStart}>
-                        <img src={image} alt={`Image ${index}`} className="min-w-50 h-50 rounded-md cursor-pointer" onClick={() => openModal(index)}  />
-                    </div>
-                  ))}
-            </div>
-           
-          );        
-    }
+  const [selectedFolder, setSelectedFolder] = useState(null);
 
-    const setPage = (buttonType) =>
+   const groups = ["Clay Ganesha Event", "Ganesh Chaturdi Festival", "Sporting Events"];
+   const sportingEventGroups = ["Table Tennis", "Cricket", "Pickleball", "Badminton"];
+
+    const getName = (str) =>
     {
-        if(buttonType === "First")
+      const match = str.match(/\/([^\/]+?)\.[a-f0-9]{10,}\.(jpg|jpeg|png|webp)$/i);
+      const name = match ? match[1] : null;
+      return name;
+    }
+
+    const setBackFolder = (currentFolder) =>
+    {
+        if(currentFolder === "Table Tennis" || currentFolder === "Cricket" || currentFolder === "Pickleball" || currentFolder === "Badminton")
         {
-            setCurrentPage(1);
+          setSelectedFolder("Sporting Events");
         }
-        else if(buttonType === "Last")
+        else
         {
-            setCurrentPage(totalPages);
-        }
-        else if(buttonType === "Previous")
-        {
-            if(currentPage > 1)
-            {
-               setCurrentPage((page) => page - 1);
-            }
-        }
-        else if(buttonType === "Next")
-        {
-            if(currentPage < totalPages)
-            {
-                setCurrentPage((page) => page + 1);
-            }
-           
+          setSelectedFolder(null);
         }
     }
 
-    return (
-            
-       <div className="my-10 p-3"> 
-          {renderImages()}
-          <div className="flex justify-center my-4 p-2 max-w-3xl mx-auto">
-                <button className="bg-cyan-500 px-4 rounded-md mx-2 text-white" onClick={() => setPage("First")}>First</button>
-                <button className="bg-cyan-500 px-4 rounded-md mx-2 text-white" onClick={() => setPage("Previous")}>Previous</button>
-                <button className="bg-cyan-500 px-4 rounded-md mx-2 text-white" onClick={() => setPage("Next")}>Next</button>
-                <button className="bg-cyan-500 px-4 rounded-md mx-2  text-white" onClick={() => setPage("Last")}>Last</button>
-            </div>
-          {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 space-x-2">
-          <span className="absolute top-5 right-5 text-white text-3xl cursor-pointer" onClick={closeModal}>&times;</span>
-          <div className="text-white text-4xl cursor-pointer" onClick={prevImage}>&#10094;</div>
-          <img src={props.photos[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} className="max-w-72 max-h-72 md:max-w-[600px] md:max-h-[600px] lg:max-w-[950px] lg:max-h-[950px]"  />          
-          <div className="text-white text-4xl cursor-pointer" onClick={nextImage}>&#10095;</div>
+    if (!selectedFolder) {      
+      return (
+        <div className="p-6">          
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            {groups.map((group, i) => (
+              <button
+                key={i}
+                onClick={() => setSelectedFolder(group)}
+                className="flex flex-col items-center p-4 border rounded-lg hover:shadow-lg transition"
+              >
+                <FcFolder size={48} className="text-blue-500 mb-2" />
+                <span className="capitalize">{group}</span>               
+              </button>
+            ))}
+          </div>
         </div>
-      )}
-       </div>
-    );
+      );
+    }
+
+    // Show photos from selected folder
+  return (
+    
+    <div className="p-6">
+      <button className="bg-header-brown py-1 px-2 rounded-lg text-gray-50 hover:bg-green-800" onClick={() => setBackFolder(selectedFolder)}>
+        Back
+      </button>
+
+      <h2 className="text-xl font-bold mb-4 capitalize text-center">{selectedFolder}</h2>
+
+      {selectedFolder === "Clay Ganesha Event" ?
+      <PhotoProvider>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          { props.clayganeshaPhotos.map((src, idx) => (
+             
+            <div key={idx} className="text-center">
+              <PhotoView src={src}>
+                <img
+                  src={src}
+                  alt={`Photo ${idx + 1}`}
+                  className="rounded-xl shadow-md cursor-pointer hover:scale-105 transition-transform"
+                />
+              </PhotoView>
+              <div className="text-sm text-gray-600 mt-2">{getName(src)}</div>
+            </div>
+          ))
+          
+          }
+        </div>
+      </PhotoProvider>      
+      : selectedFolder === "Ganesh Chaturdi Festival" ?
+      <PhotoProvider>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          { props.photos.map((src, idx) => (
+            <div key={idx} className="text-center">
+            <PhotoView src={src}>
+              <img
+                src={src}
+                alt={`Photo ${idx + 1}`}
+                className="rounded-xl shadow-md cursor-pointer hover:scale-105 transition-transform"
+              />
+            </PhotoView>
+            <div className="text-sm text-gray-600 mt-2">{getName(src)}</div>
+          </div>
+          ))
+          
+          }
+        </div>
+      </PhotoProvider>
+      : selectedFolder === "Sporting Events" ?
+      <div className="p-6">          
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            {sportingEventGroups.map((group, i) => (
+              <button
+                key={i}
+                onClick={() => setSelectedFolder(group)}
+                className="flex flex-col items-center p-4 border rounded-lg hover:shadow-lg transition"
+              >
+                <FcFolder size={48} className="text-blue-500 mb-2" />
+                <span className="capitalize">{group}</span>               
+              </button>
+            ))}
+          </div>
+        </div>
+      : selectedFolder === "Table Tennis" ?
+      <PhotoProvider>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          { props.ttPhotos.map((src, idx) => (
+            <div key={idx} className="text-center">
+            <PhotoView src={src}>
+              <img
+                src={src}
+                alt={`Photo ${idx + 1}`}
+                className="rounded-xl shadow-md cursor-pointer hover:scale-105 transition-transform"
+              />
+            </PhotoView>
+            <div className="text-sm text-gray-600 mt-2">{getName(src)}</div>
+          </div>
+          ))
+          
+          }
+        </div>
+      </PhotoProvider>
+      : selectedFolder === "Cricket" ?
+      <PhotoProvider>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          { props.cricketPhotos.map((src, idx) => (
+            <div key={idx} className="text-center">
+            <PhotoView src={src}>
+              <img
+                src={src}
+                alt={`Photo ${idx + 1}`}
+                className="rounded-xl shadow-md cursor-pointer hover:scale-105 transition-transform"
+              />
+            </PhotoView>
+            <div className="text-sm text-gray-600 mt-2">{getName(src)}</div>
+          </div>
+          ))
+          
+          }
+        </div>
+      </PhotoProvider>
+      : selectedFolder === "Pickleball" ?
+      <PhotoProvider>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          { props.pickleballPhotos.map((src, idx) => (
+            <div key={idx} className="text-center">
+            <PhotoView src={src}>
+              <img
+                src={src}
+                alt={`Photo ${idx + 1}`}
+                className="rounded-xl shadow-md cursor-pointer hover:scale-105 transition-transform"
+              />
+            </PhotoView>
+            <div className="text-sm text-gray-600 mt-2">{getName(src)}</div>
+          </div>
+          ))
+          
+          }
+        </div>
+      </PhotoProvider>
+      : selectedFolder === "Badminton" ?
+      <PhotoProvider>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          { props.badmintonPhotos.map((src, idx) => (
+            <div key={idx} className="text-center">
+            <PhotoView src={src}>
+              <img
+                src={src}
+                alt={`Photo ${idx + 1}`}
+                className="rounded-xl shadow-md cursor-pointer hover:scale-105 transition-transform"
+              />
+            </PhotoView>
+            <div className="text-sm text-gray-600 mt-2">{getName(src)}</div>
+          </div>
+          ))
+          
+          }
+        </div>
+      </PhotoProvider>
+      :<></>
+}
+    </div>
+  );
 };
 
 export default PhotoGallery;
